@@ -9,7 +9,7 @@
 ## Pasos
 1. Clona el repositorio o descárgalo como ZIP.
 2. Abre la carpeta en Visual Studio Code.
-3. Abre MySQL Workbench y ejecuta el contenido de database/schema.sql.
+3. Abre MySQL Workbench y ejecuta el contenido de database/schema.sql, o configura .env y luego corre npm run db:setup.
 4. Copia .env.example como .env en la raíz del proyecto.
 5. Configura DB_USER, DB_PASSWORD y el resto de parámetros según tu MySQL local. No compartas el archivo .env ni lo subas a GitHub.
 6. En la terminal ejecuta npm install.
