@@ -62,5 +62,5 @@ test('el ejemplo de entorno no contiene credenciales reales', () => {
 test('la documentación señala el alcance académico', () => {
   const readme = read('README.md');
   assert.match(readme, /prototipo académico/i);
-  assert.match(readme, /no representa inventario real/i);
+  assert.match(readme, /no representan? inventario real/i);
 });
