@@ -1,0 +1,78 @@
+name: End-to-end demo capture
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/**"
+      - "src/**"
+      - "database/**"
+      - "scripts/**"
+      - "package.json"
+      - ".github/workflows/demo-capture.yml"
+  workflow_dispatch:
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: rootpass
+          MYSQL_ROOT_HOST: "%"
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -prootpass"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install application dependencies
+        run: npm install
+      - name: Prepare demonstration database
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USER: root
+          DB_PASSWORD: rootpass
+          DB_NAME: nexora_gaming
+        run: npm run db:setup
+      - name: Install Playwright for screenshots
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start the application
+        env:
+          PORT: 3000
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USER: root
+          DB_PASSWORD: rootpass
+          DB_NAME: nexora_gaming
+        run: |
+          npm start > /tmp/nexora.log 2>&1 &
+          echo $! > /tmp/nexora.pid
+          for i in {1..40}; do
+            if curl --silent --fail http://127.0.0.1:3000/api/health; then
+              break
+            fi
+            sleep 1
+          done
+          curl --silent --fail http://127.0.0.1:3000/api/health
+      - name: Capture the running website
+        run: node scripts/capture-site.cjs
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexora-running-site-captures
+          path: artifacts/*.png
+          if-no-files-found: error
+          retention-days: 7
