@@ -55,6 +55,8 @@ Los productos, precios, existencias y pedidos son datos de prueba académicos: n
 - [Manual de uso local](docs/USO-LOCAL.md)
 - [Guion de sustentación](docs/GUION-SUSTENTACION.md)
 - [Modelo de base de datos](database/README.md)
+- [Volcado SQL inicial editable](database/nexora_gaming_export.sql)
+- [Modelo entidad–relación](docs/MODELO-ER.md)
 
 ## Seguridad y alcance
 
