@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d14">
+  <title>Panel demo | Nexora Gaming & Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="/js/admin.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <a class="brand" href="/" aria-label="Volver a la tienda"><span class="brand-mark">N</span><span>NEXORA<span class="brand-light">.</span><small>GAMING & TECH</small></span></a>
+    <div class="admin-header-right"><span class="demo-pill">PANEL DE DEMOSTRACIÓN</span><a href="/" class="back-link">← Volver a la tienda</a></div>
+  </header>
+  <main class="admin-shell">
+    <div class="page-intro"><div><div class="eyebrow"><span class="pulse-dot"></span> CONTROL CENTER / DEMO</div><h1>Resumen del <span>negocio.</span></h1><p>Indicadores de catálogo y pedidos registrados en la base de datos local.</p></div><button id="refresh" class="refresh-button">↻ Actualizar datos</button></div>
+    <div class="demo-warning"><strong>Importante:</strong> panel académico sin autenticación. Solo usar con datos ficticios y nunca con información comercial privada.</div>
+    <section class="stat-grid" aria-label="Indicadores principales">
+      <article class="stat-card"><div class="stat-icon">▦</div><span>Productos activos</span><strong id="stat-products">—</strong><small>Referencias de catálogo</small></article>
+      <article class="stat-card"><div class="stat-icon purple">◇</div><span>Categorías</span><strong id="stat-categories">—</strong><small>Grupos del catálogo</small></article>
+      <article class="stat-card"><div class="stat-icon blue">⌑</div><span>Pedidos registrados</span><strong id="stat-orders">—</strong><small>Incluye pedidos pendientes</small></article>
+      <article class="stat-card"><div class="stat-icon orange">▤</div><span>Unidades en stock</span><strong id="stat-stock">—</strong><small>Existencias de demostración</small></article>
+    </section>
+    <section class="dashboard-grid">
+      <article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">DISTRIBUCIÓN</span><h2>Productos por categoría</h2></div><span class="panel-badge">CATÁLOGO</span></div><div class="chart-wrap"><canvas id="category-chart" role="img" aria-label="Gráfica de cantidades por categoría"></canvas><p id="chart-message" class="muted-message" hidden>No se han podido cargar las categorías.</p></div></article>
+      <article class="panel sales-panel"><div class="panel-heading"><div><span class="eyebrow">VENTAS</span><h2>Resumen de pedidos</h2></div></div><div class="sales-total" id="stat-sales">$0</div><p>Valor de pedidos marcados como pagados. En esta versión no se realizan cobros reales.</p><div class="sales-divider"></div><div class="sales-row"><span>Estado del pago demo</span><strong>Pendiente / simulado</strong></div><div class="sales-row"><span>Pasarela de pagos</span><strong>No conectada</strong></div><div class="sales-row"><span>Datos reales</span><strong>No utilizados</strong></div></article>
+    </section>
+    <section class="panel inventory-panel"><div class="panel-heading"><div><span class="eyebrow">CATÁLOGO</span><h2>Productos y existencias</h2></div><span id="product-count" class="panel-badge">— referencias</span></div><div class="table-scroll"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Tipo</th><th>Precio (COP)</th><th>Stock demo</th></tr></thead><tbody id="product-table"><tr><td colspan="5" class="muted-message">Cargando datos...</td></tr></tbody></table></div></section>
+    <p class="footer-note">Nexora Gaming & Tech · Proyecto de Ingeniería Web · SEMILLERO UMB SOFT. Este panel es de lectura y se entrega solo para demostración académica.</p>
+  </main>
+  <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
