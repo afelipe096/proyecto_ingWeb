@@ -24,6 +24,7 @@ Desarrollar una aplicación web de comercio electrónico para explorar productos
 - Carrito con cantidades, eliminación de artículos y cálculo de subtotal.
 - Formulario de pedido y registro de pedido de demostración en la base de datos.
 - Consulta de categorías, productos individuales y métricas de solo lectura.
+- Panel de demostración en admin.html con indicadores y gráfica de productos por categoría.
 - Mensajes claros indicando que no se realizan cobros reales.
 
 ## Fuera del alcance inicial
@@ -76,7 +77,7 @@ Desarrollar una aplicación web de comercio electrónico para explorar productos
 - dotenv: cargar configuración local desde variables de entorno.
 - helmet: aplicar cabeceras HTTP de seguridad.
 - cors: definir el comportamiento de solicitudes cross-origin; puede restringirse al dominio de despliegue.
-- Chart.js: librería prevista para graficar datos cuando se implemente un panel visual con series reales. La base inicial usa métricas API; las gráficas no son una funcionalidad principal del primer corte.
+- Chart.js: dibuja la gráfica de productos por categoría en el panel administrativo de demostración.
 
 ## Nota de seguridad
 
