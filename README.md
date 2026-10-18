@@ -4,7 +4,7 @@ Tienda web académica de productos tecnológicos y gaming desarrollada para la a
 
 ## Objetivo
 
-Construir una tienda de comercio electrónico con catálogo organizado por categorías, búsqueda y filtros, carrito de compras, creación de pedidos de demostración y un área administrativa básica. El proyecto permite evidenciar el uso de HTML5, CSS3, JavaScript, Node.js, Express y MySQL.
+Construir una tienda de comercio electrónico con catálogo organizado por categorías, búsqueda y filtros, carrito de compras, creación de pedidos de demostración y métricas administrativas de solo lectura. El proyecto evidencia el uso de HTML5, CSS3, JavaScript, Node.js, Express y MySQL.
 
 ## Categorías
 
@@ -13,37 +13,49 @@ Construir una tienda de comercio electrónico con catálogo organizado por categ
 - Controles, teclados, ratones y audífonos
 - Sillas, escritorios y monitores
 - Computadores y componentes
-- Cables, cargadores y conectividad
+- Cables, cargadores, hubs y conectividad
 - Almacenamiento, redes y streaming
+- Componentes, periféricos y accesorios de oficina tecnológica
 
 ## Tecnologías
 
-- Frontend: HTML5, CSS3, JavaScript y Chart.js.
+- Frontend: HTML5, CSS3 y JavaScript.
 - Backend: Node.js y Express.
-- Base de datos: MySQL.
-- API: REST, con validación en servidor.
+- Base de datos: MySQL, con consultas parametrizadas y transacciones.
+- Librerías: mysql2, dotenv, Helmet y cors. Chart.js está previsto para visualizaciones de métricas.
+- Pruebas: Node.js built-in test runner y comprobación de sintaxis.
 
-## Estado inicial
+## Funcionalidades
 
-El repositorio inicia con la estructura y especificación del proyecto. La información de productos que se agregue para demostración debe identificarse como datos de prueba; no representa inventario real ni una pasarela de pago conectada.
+- Catálogo, búsqueda, filtro por categoría y ordenamiento.
+- Carrito persistido localmente en el navegador.
+- Validación de pedido, recálculo de importes desde la base de datos y guardado transaccional de pedidos de demostración.
+- Resumen de inventario de solo lectura en la API.
+- Diseño responsive y documentación técnica.
+
+Los productos, precios, existencias y pedidos son datos académicos de ejemplo, no información comercial real. No se realizan cobros, no se conecta una pasarela de pagos y no se entregan claves reales de juegos.
 
 ## Ejecución local
 
 1. Instala Node.js LTS y MySQL Server.
-2. Crea una base de datos ejecutando el script `database/schema.sql`.
-3. Copia `.env.example` a `.env` y configura la conexión de tu entorno.
-4. Instala dependencias con `npm install`.
-5. Ejecuta `npm run dev` para desarrollo o `npm start` para ejecución normal.
-6. Abre `http://localhost:3000`.
+2. Crea las tablas y datos iniciales ejecutando el archivo database/schema.sql desde MySQL Workbench.
+3. Copia .env.example a .env y configura la conexión local. No subas .env a GitHub.
+4. Instala dependencias con npm install.
+5. Ejecuta npm run check y npm test.
+6. Ejecuta npm run dev.
+7. Abre http://localhost:3000 y comprueba http://localhost:3000/api/health.
 
 ## Documentación académica
 
 - [Alcance y requisitos](docs/REQUISITOS.md)
 - [Mapa de navegación](docs/MAPA-NAVEGACION.md)
 - [Arquitectura](docs/ARQUITECTURA.md)
+- [Investigación de librerías JavaScript](docs/INVESTIGACION-LIBRERIAS.md)
+- [Plan de pruebas](docs/PRUEBAS.md)
+- [Manual de uso local](docs/USO-LOCAL.md)
 - [Guion de sustentación](docs/GUION-SUSTENTACION.md)
-- [Base de datos](database/README.md)
+- [Modelo de base de datos](database/README.md)
 
-## Importante
+## Seguridad y alcance
 
-Esta aplicación es un prototipo académico. Antes de manejar pagos reales, datos personales o pedidos reales se deben incorporar autenticación segura, autorización, protección de datos, gestión de inventario transaccional y un proveedor de pagos certificado.
+Esta aplicación es un prototipo académico. Antes de manejar pagos reales o datos personales se deben incorporar autenticación y autorización, límites de solicitudes, política de seguridad de contenido apropiada, protección de datos y un proveedor de pagos certificado. El resumen administrativo no está protegido por login, por lo que no debe usarse con datos privados.
