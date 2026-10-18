@@ -19,10 +19,10 @@ Construir una tienda de comercio electrónico con catálogo organizado por categ
 
 ## Tecnologías
 
-- Frontend: HTML5, CSS3 y JavaScript.
+- Frontend: HTML5, CSS3 y JavaScript; panel administrativo de métricas con Chart.js.
 - Backend: Node.js y Express.
 - Base de datos: MySQL, con consultas parametrizadas y transacciones.
-- Librerías: mysql2, dotenv, Helmet y cors. Chart.js está previsto para visualizaciones de métricas.
+- Librerías: mysql2, dotenv, Helmet, cors y Chart.js para la gráfica de productos por categoría en el panel de demostración.
 - Pruebas: Node.js built-in test runner y comprobación de sintaxis.
 
 ## Funcionalidades
