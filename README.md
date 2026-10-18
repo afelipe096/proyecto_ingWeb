@@ -39,9 +39,9 @@ Los productos, precios, existencias y pedidos son datos de prueba académicos: n
 
 1. Instala Node.js LTS y MySQL Server.
 2. Crea las tablas y datos iniciales ejecutando el archivo database/schema.sql desde MySQL Workbench.
-3. Copia .env.example a .env y configura la conexión local. No subas .env a GitHub.
+3. Copia .env.example a .env y configura la conexión local. No subas .env a GitHub. También puedes cargar el esquema con npm run db:setup.
 4. Instala dependencias con npm install.
-5. Ejecuta npm run check y npm test.
+5. Ejecuta npm run check y npm test. GitHub Actions valida sintaxis y pruebas estáticas; otro flujo captura la interfaz con MySQL temporal para verificación visual.
 6. Ejecuta npm run dev.
 7. Abre http://localhost:3000 y comprueba http://localhost:3000/api/health.
 
