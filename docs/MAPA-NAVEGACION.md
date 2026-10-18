@@ -7,6 +7,7 @@ flowchart TD
     A[Inicio / Nexora] --> B[Catálogo]
     A --> C[Categorías]
     A --> D[Sobre nosotros]
+    A --> P[Panel de demostración]
     C --> E[Catálogo filtrado por categoría]
     B --> F[Buscar producto]
     B --> G[Filtrar categoría]
@@ -32,6 +33,7 @@ flowchart TD
 - **Formulario de pedido:** recoge nombre y correo, valida los campos y envía una solicitud a la API.
 - **Confirmación:** comunica el número del pedido de prueba e indica que no se procesó ningún pago.
 - **Sobre nosotros:** explica la finalidad del prototipo.
+- **Panel de demostración:** ruta independiente admin.html que muestra métricas de catálogo, pedidos y unidades mediante la API; es de lectura y no tiene autenticación.
 
 ## Rutas de API
 
