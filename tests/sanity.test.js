@@ -16,8 +16,12 @@ test('el proyecto tiene las piezas principales', () => {
     'public/index.html',
     'public/css/styles.css',
     'public/js/app.js',
+    'public/admin.html',
+    'public/js/admin.js',
     'database/schema.sql',
-    'docs/ARQUITECTURA.md'
+    'database/nexora_gaming_export.sql',
+    'docs/ARQUITECTURA.md',
+    'docs/INVESTIGACION-LIBRERIAS.md'
   ]) {
     assert.ok(fs.existsSync(path.join(root, file)), 'Falta ' + file);
   }
