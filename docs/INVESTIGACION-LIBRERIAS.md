@@ -18,7 +18,7 @@ La actividad académica pide investigar librerías de JavaScript y su aceptació
 
 ## Uso en la aplicación
 - Express, mysql2, dotenv, Helmet y cors se declaran como dependencias del proyecto.
-- Chart.js se carga desde una distribución CDN y se considera para las métricas visuales del panel. Se requiere conexión a internet para descargarla.
+- Chart.js se carga desde una distribución CDN y se utiliza para graficar los productos por categoría en el panel de demostración. Se requiere conexión a internet para descargarla.
 - La interfaz usa APIs nativas del navegador como fetch, localStorage, FormData e Intl.NumberFormat; no toda interacción necesita una librería externa.
 
 ## Aceptación y relevancia industrial
