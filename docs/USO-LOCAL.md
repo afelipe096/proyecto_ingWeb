@@ -16,7 +16,7 @@
 7. Ejecuta npm run dev.
 8. Abre http://localhost:3000.
 9. Comprueba http://localhost:3000/api/health.
-10. Para revisar métricas de inventario, abre http://localhost:3000/admin.html si el panel ya está instalado.
+10. Para revisar métricas de inventario, abre http://localhost:3000/admin.html.
 
 ## Pedido de prueba
 Agrega productos al carrito y completa nombre y correo ficticios. Si MySQL está configurado, el servidor verifica de nuevo los precios y existencias y registra el pedido. La respuesta debe indicar que no hubo cobro real.
