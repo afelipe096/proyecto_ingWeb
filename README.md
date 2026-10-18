@@ -33,7 +33,7 @@ Construir una tienda de comercio electrónico con catálogo organizado por categ
 - Resumen de inventario de solo lectura en la API.
 - Diseño responsive y documentación técnica.
 
-Los productos, precios, existencias y pedidos son datos académicos de ejemplo, no información comercial real. No se realizan cobros, no se conecta una pasarela de pagos y no se entregan claves reales de juegos.
+Los productos, precios, existencias y pedidos son datos de prueba académicos: no representan inventario real ni información comercial real. No se realizan cobros, no se conecta una pasarela de pagos y no se entregan claves reales de juegos.
 
 ## Ejecución local
 
