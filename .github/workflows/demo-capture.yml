@@ -67,6 +67,8 @@ jobs:
             sleep 1
           done
           curl --silent --fail http://127.0.0.1:3000/api/health
+      - name: Exercise API and create a demo order in temporary MySQL
+        run: node scripts/smoke-api.cjs
       - name: Capture the running website
         run: node scripts/capture-site.cjs
       - name: Upload screenshots
