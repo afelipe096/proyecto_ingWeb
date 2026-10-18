@@ -5,7 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/server.js && node --check src/config/database.js && node --check src/routes/products.js && node --check src/routes/categories.js && node --check src/routes/orders.js && node --check src/routes/admin.js && node --check public/js/app.js",
+    "test": "node --test"
   },
   "keywords": ["ecommerce", "gaming", "tecnologia", "ingenieria-web", "umb"],
   "license": "UNLICENSED",
