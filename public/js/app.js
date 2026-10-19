@@ -88,7 +88,7 @@
       const fallback = fallbackCatalog();
       state.products = fallback.products;
       state.categories = fallback.categories;
-      toast('Catálogo de demostración cargado. Conecta la base de datos para pedidos persistentes.');
+      toast('Catálogo de demostración cargado. El registro de pedidos requiere conexión con la base de datos.');
     }
     renderCategories();
     renderFilters();
@@ -145,6 +145,18 @@
     return visible;
   }
 
+
+  function attachImageFallbacks(container) {
+    container.querySelectorAll('img').forEach((image) => {
+      const markUnavailable = () => {
+        image.classList.add('image-error');
+        if (!image.alt) image.alt = 'Imagen no disponible';
+      };
+      image.addEventListener('error', markUnavailable, { once: true });
+      if (image.complete && image.naturalWidth === 0) markUnavailable();
+    });
+  }
+
   function renderProducts() {
     const products = getVisibleProducts();
     $('#catalog-count').textContent = `${products.length} ${products.length === 1 ? 'producto' : 'productos'} disponibles`;
@@ -155,7 +167,7 @@
     $('#product-grid').innerHTML = products.map((product, index) => `
       <article class="product-card">
         <div class="product-image-wrap">
-          <img src="${escapeHtml(product.image_url || '')}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.style.opacity='.2';this.alt='Imagen no disponible'">
+          <img src="${escapeHtml(product.image_url || '')}" alt="${escapeHtml(product.name)}" loading="lazy">
           ${product.product_type === 'digital' ? '<span class="product-badge digital">DIGITAL</span>' : (product.is_featured ? '<span class="product-badge">DESTACADO</span>' : '')}
           <span class="product-image-index">NX / ${String(index + 1).padStart(2, '0')}</span>
         </div>
@@ -167,6 +179,7 @@
           <div class="product-actions"><button class="add-cart" data-add="${Number(product.id)}">+ Agregar al carrito</button><button class="product-detail" data-detail="${Number(product.id)}" aria-label="Ver información de ${escapeHtml(product.name)}">↗</button></div>
         </div>
       </article>`).join('');
+    attachImageFallbacks($('#product-grid'));
     $('#product-grid').querySelectorAll('[data-add]').forEach((button) =>
       button.addEventListener('click', () => addToCart(Number(button.dataset.add))));
     $('#product-grid').querySelectorAll('[data-detail]').forEach((button) =>
@@ -228,12 +241,13 @@
     }
     $('#cart-items').innerHTML = details.map(({ product, quantity, lineTotal }) => `
       <div class="cart-item">
-        <img src="${escapeHtml(product.image_url || '')}" alt="" onerror="this.style.opacity='.2'">
+        <img src="${escapeHtml(product.image_url || '')}" alt="" loading="lazy">
         <div><h4>${escapeHtml(product.name)}</h4><small>${money(product.price)} c/u</small>
           <div class="quantity-control"><button data-quantity="${product.id}" data-delta="-1" aria-label="Restar una unidad">−</button><span>${quantity}</span><button data-quantity="${product.id}" data-delta="1" aria-label="Sumar una unidad">+</button></div>
         </div>
         <div class="cart-item-price">${money(lineTotal)}<button class="remove-item" data-remove="${product.id}">Eliminar</button></div>
       </div>`).join('');
+    attachImageFallbacks($('#cart-items'));
     $('#cart-items').querySelectorAll('[data-quantity]').forEach((button) =>
       button.addEventListener('click', () => changeQuantity(Number(button.dataset.quantity), Number(button.dataset.delta))));
     $('#cart-items').querySelectorAll('[data-remove]').forEach((button) =>
