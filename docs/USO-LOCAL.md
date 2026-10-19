@@ -49,4 +49,4 @@ Desde MySQL Workbench, la opción **Server → Data Export** permite seleccionar
 
 ## Consideraciones del prototipo
 
-Los datos del catálogo son ilustrativos. El panel de métricas no cuenta con autenticación y no debe utilizarse para información privada. El sistema no incorpora procesamiento de pagos ni entrega de códigos digitales reales.
+Los datos del catálogo son ilustrativos. El panel de métricas es una vista de demostración sin autenticación y presenta indicadores del conjunto de datos de prueba. El sistema no incorpora procesamiento de pagos ni entrega de códigos digitales reales.
