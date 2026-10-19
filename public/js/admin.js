@@ -99,7 +99,7 @@
       renderChart(categories);
       renderProducts(products);
     } catch (error) {
-      showToast(error.message + ' Comprueba que MySQL esté configurado.');
+      showToast('No fue posible consultar los datos de la aplicación.');
       $('#product-table').innerHTML = '<tr><td colspan="5" class="muted-message">No hay conexión con los datos de la API. Ejecuta el servidor y configura MySQL.</td></tr>';
       $('#chart-message').hidden = false;
       $('#chart-message').textContent = 'No se pudieron cargar los indicadores.';
