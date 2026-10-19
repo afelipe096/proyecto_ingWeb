@@ -95,4 +95,25 @@ JOIN (
   UNION ALL SELECT 'cables-energia','Hub USB-C multipuerto','hub-usbc-multipuerto','Accesorio de conectividad de demostración.','physical',119900.00,20,'https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=80',0
   UNION ALL SELECT 'almacenamiento-redes','SSD externo 1 TB','ssd-externo-1tb','Almacenamiento externo de ejemplo.','physical',329900.00,10,'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80',0
   UNION ALL SELECT 'tarjetas-regalo','Tarjeta de regalo digital','tarjeta-regalo-digital','Producto digital de demostración, sin saldo real.','digital',50000.00,30,'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',0
-) p ON p.category_slug = c.slug;
+) p ON p.category_slug = c.slug
+ORDER BY c.id;
+
+
+-- Segunda selección de productos para ampliar el catálogo de demostración.
+INSERT IGNORE INTO products
+(category_id, name, slug, description, product_type, price, stock, image_url, is_featured)
+SELECT c.id, p.name, p.slug, p.description, p.product_type, p.price, p.stock, p.image_url, p.is_featured
+FROM categories c
+JOIN (
+  SELECT 'juegos-digitales' category_slug, 'Licencia de juego independiente (demo)' name, 'licencia-juego-independiente-demo' slug, 'Registro digital simulado; no incluye una clave de activación real.' description, 'digital' product_type, 35900.00 price, 80 stock, 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80' image_url, 0 is_featured
+  UNION ALL SELECT 'consolas-accesorios','Base de carga para controles','base-carga-controles','Base de carga de ejemplo para mandos inalámbricos.','physical',89900.00,9,'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'audio-streaming','Micrófono USB para streaming','microfono-usb-streaming','Micrófono ilustrativo para grabación y transmisión.','physical',169900.00,8,'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'monitores-pantallas','Monitor IPS 24 pulgadas','monitor-ips-24','Monitor de muestra para trabajo, estudio y juego.','physical',599900.00,5,'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'computadores-componentes','Memoria RAM DDR5 32 GB','memoria-ram-ddr5-32gb','Componente ilustrativo para una configuración de PC.','physical',429900.00,11,'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'sillas-escritorios','Escritorio gamer compacto','escritorio-gamer-compacto','Escritorio de muestra para espacios de juego y trabajo.','physical',499900.00,3,'https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'perifericos','Mouse gamer de alta precisión','mouse-gamer-alta-precision','Ratón de demostración con ajustes de precisión.','physical',99900.00,22,'https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'cables-energia','Cargador USB-C de 65 W','cargador-usbc-65w','Cargador de muestra para dispositivos compatibles.','physical',139900.00,15,'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'almacenamiento-redes','Router Wi-Fi 6','router-wifi-6','Equipo de red de demostración.','physical',259900.00,6,'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80',0
+  UNION ALL SELECT 'tarjetas-regalo','Tarjeta de regalo digital 100.000','tarjeta-regalo-digital-100000','Saldo digital ficticio para mostrar la categoría; no es canjeable.','digital',100000.00,40,'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',0
+) p ON p.category_slug = c.slug
+ORDER BY c.id;
