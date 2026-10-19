@@ -24,6 +24,7 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 - Catálogo organizado en nueve categorías y un conjunto de 20 productos de demostración.
 - Búsqueda por nombre, descripción o categoría.
 - Filtro por categoría y ordenamiento por precio o nombre.
+- Vista detallada del producto seleccionado.
 - Carrito con cantidades, eliminación de artículos y cálculo del subtotal.
 - Formulario de pedido y registro transaccional en la base de datos.
 - Consulta de categorías, productos individuales y métricas.
