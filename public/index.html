@@ -89,6 +89,10 @@
     <div class="cart-footer"><div class="cart-total"><span>Subtotal</span><strong id="cart-total">$0</strong></div><small>Envío e impuestos no calculados. Pedido de demostración.</small><button class="button button-primary checkout-button" id="checkout-button" disabled>Continuar pedido <span>→</span></button></div>
   </aside>
 
+  <dialog class="product-detail-dialog" id="product-detail-dialog" aria-labelledby="product-detail-title">
+    <div id="product-detail-content"></div>
+  </dialog>
+
   <dialog class="checkout-dialog" id="checkout-dialog">
     <form id="checkout-form" class="checkout-form">
       <div class="dialog-heading"><div><div class="eyebrow">ÚLTIMO PASO</div><h2>Datos del pedido</h2></div><button type="button" id="close-checkout" class="close-cart" aria-label="Cerrar">×</button></div>
@@ -102,6 +106,5 @@
       <small>Sin cobro real · El pedido quedará marcado como pendiente de pago.</small>
     </form>
   </dialog>
-  <div class="modal-backdrop" id="modal-backdrop"></div>
 </body>
 </html>
