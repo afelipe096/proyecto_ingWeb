@@ -6,7 +6,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 
-test('el proyecto tiene las piezas principales', () => {
+test('el proyecto incluye frontend, API, base de datos y documentación', () => {
   for (const file of [
     'src/server.js',
     'src/config/database.js',
@@ -18,10 +18,12 @@ test('el proyecto tiene las piezas principales', () => {
     'public/js/app.js',
     'public/admin.html',
     'public/js/admin.js',
+    'public/404.html',
     'database/schema.sql',
     'database/nexora_gaming_export.sql',
     'docs/ARQUITECTURA.md',
-    'docs/INVESTIGACION-LIBRERIAS.md'
+    'docs/INVESTIGACION-LIBRERIAS.md',
+    'docs/MAPA-NAVEGACION.md'
   ]) {
     assert.ok(fs.existsSync(path.join(root, file)), 'Falta ' + file);
   }
@@ -34,15 +36,18 @@ test('el esquema declara las tablas principales y relaciones', () => {
   }
   assert.match(schema, /FOREIGN KEY/);
   assert.match(schema, /utf8mb4/);
+  assert.match(schema, /licencia-juego-independiente-demo/);
+  assert.match(schema, /tarjeta-regalo-digital-100000/);
 });
 
-test('la API valida pedidos y calcula importes en el servidor', () => {
+test('la API valida pedidos y gestiona la transacción', () => {
   const orders = read('src/routes/orders.js');
   assert.match(orders, /beginTransaction/);
   assert.match(orders, /commit\(\)/);
   assert.match(orders, /rollback\(\)/);
   assert.match(orders, /product\.price/);
   assert.match(orders, /payment_status/);
+  assert.match(orders, /combinedQuantity/);
   assert.match(orders, /No se realizó ningún cobro/);
 });
 
@@ -55,16 +60,29 @@ test('la interfaz incluye búsqueda, filtros y carrito', () => {
   assert.match(js, /localStorage/);
   assert.match(js, /renderProducts/);
   assert.match(js, /submitOrder/);
+  assert.match(js, /attachImageFallbacks/);
+  assert.doesNotMatch(js, /onerror=/i);
+});
+
+test('el servidor define cabeceras de seguridad y limita CORS', () => {
+  const server = read('src/server.js');
+  assert.match(server, /helmet\(/);
+  assert.match(server, /contentSecurityPolicy/);
+  assert.match(server, /allowedOrigins/);
+  assert.match(server, /disable\('x-powered-by'\)/);
 });
 
 test('el ejemplo de entorno no contiene credenciales reales', () => {
   const example = read('.env.example');
   assert.match(example, /DB_PASSWORD=CAMBIA_ESTA_CLAVE/);
+  assert.match(example, /CORS_ORIGINS=/);
   assert.ok(!fs.existsSync(path.join(root, '.env')), 'No debe versionarse .env');
 });
 
-test('la documentación señala el alcance académico', () => {
+test('la documentación describe el alcance del prototipo sin instrucciones personales', () => {
   const readme = read('README.md');
   assert.match(readme, /prototipo académico/i);
-  assert.match(readme, /no representan? inventario real/i);
+  assert.match(readme, /datos ilustrativos/i);
+  assert.match(readme, /nexora_gaming_export\.sql/);
+  assert.doesNotMatch(readme, /ChatGPT|recomendación para ti|antes de entregar/i);
 });
