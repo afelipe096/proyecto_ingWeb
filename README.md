@@ -1,63 +1,120 @@
 # Nexora Gaming & Tech
 
-Tienda web académica de productos tecnológicos y gaming desarrollada para la actividad de sustentación de proyecto de Ingeniería Web — SEMILLERO UMB SOFT, Universidad Manuela Beltrán.
+Aplicación web de comercio electrónico para la consulta de productos de tecnología y gaming. El proyecto se desarrolla en el marco de Ingeniería Web del SEMILLERO UMB SOFT de la Universidad Manuela Beltrán.
+
+## Descripción
+
+Nexora organiza en un único catálogo productos digitales, periféricos y equipos tecnológicos. La interfaz permite consultar productos, filtrar por categoría, buscar por texto, ordenar resultados, administrar un carrito y registrar pedidos de demostración.
 
 ## Objetivo
 
-Construir una tienda de comercio electrónico con catálogo organizado por categorías, búsqueda y filtros, carrito de compras, creación de pedidos de demostración y métricas administrativas de solo lectura. El proyecto evidencia el uso de HTML5, CSS3, JavaScript, Node.js, Express y MySQL.
+Desarrollar una aplicación web que integre una interfaz de comercio electrónico, una API REST y una base de datos relacional, aplicando HTML5, CSS3, JavaScript y herramientas del entorno Node.js.
 
-## Categorías
+## Categorías del catálogo
 
 - Juegos digitales y tarjetas de regalo
 - Consolas y accesorios
-- Controles, teclados, ratones y audífonos
-- Sillas, escritorios y monitores
+- Audio y streaming
+- Monitores y pantallas
 - Computadores y componentes
-- Cables, cargadores, hubs y conectividad
-- Almacenamiento, redes y streaming
-- Componentes, periféricos y accesorios de oficina tecnológica
+- Sillas y escritorios
+- Periféricos
+- Cables y energía
+- Almacenamiento y redes
+
+El catálogo contiene 20 productos de demostración con precios y existencias ilustrativos.
+
+## Funcionalidades principales
+
+- Catálogo de productos organizado por categorías.
+- Búsqueda por nombre, descripción o categoría.
+- Filtro por categoría y ordenamiento por nombre o precio.
+- Carrito con cantidades, eliminación de productos y cálculo de subtotal.
+- Formulario y registro transaccional de pedidos de demostración.
+- Validación en el servidor de productos, cantidades, precios y existencias.
+- Panel de indicadores de catálogo, pedidos e inventario.
+- Diseño responsive para escritorio y dispositivos móviles.
+- Exportación SQL del esquema y los datos iniciales del catálogo.
 
 ## Tecnologías
 
-- Frontend: HTML5, CSS3 y JavaScript; panel administrativo de métricas con Chart.js.
-- Backend: Node.js y Express.
-- Base de datos: MySQL, con consultas parametrizadas y transacciones.
-- Librerías: mysql2, dotenv, Helmet, cors y Chart.js para la gráfica de productos por categoría en el panel de demostración.
-- Pruebas: Node.js built-in test runner y comprobación de sintaxis.
+| Capa | Tecnología | Responsabilidad |
+|---|---|---|
+| Interfaz | HTML5, CSS3, JavaScript | Navegación, catálogo, filtros y carrito |
+| API | Node.js, Express | Rutas HTTP y lógica de aplicación |
+| Persistencia | MySQL, mysql2 | Productos, categorías, clientes y pedidos |
+| Visualización | Chart.js | Gráfica de productos por categoría |
+| Configuración | dotenv | Variables de entorno |
+| Seguridad HTTP | Helmet, CORS | Cabeceras y política de orígenes |
+| Verificación | Node.js test runner, GitHub Actions | Pruebas de estructura, sintaxis e integración |
 
-## Funcionalidades
+## Arquitectura
 
-- Catálogo, búsqueda, filtro por categoría y ordenamiento.
-- Carrito persistido localmente en el navegador.
-- Validación de pedido, recálculo de importes desde la base de datos y guardado transaccional de pedidos de demostración.
-- Resumen de inventario de solo lectura en la API.
-- Diseño responsive y documentación técnica.
+La solución se organiza en tres capas lógicas:
 
-Los productos, precios, existencias y pedidos son datos de prueba académicos: no representan inventario real ni información comercial real. No se realizan cobros, no se conecta una pasarela de pagos y no se entregan claves reales de juegos.
+1. **Frontend:** muestra las vistas y envía solicitudes mediante Fetch API.
+2. **Backend:** valida los datos y expone endpoints REST mediante Express.
+3. **Base de datos:** conserva categorías, productos, clientes, pedidos y detalles.
+
+El carrito se mantiene en el almacenamiento local del navegador. Al registrar un pedido, el servidor consulta nuevamente los precios y existencias y guarda la operación mediante una transacción SQL.
+
+## Estructura del repositorio
+
+```text
+public/                 Interfaz de la tienda y panel de métricas
+  css/                  Hojas de estilos
+  js/                   Lógica del navegador
+src/                    Servidor, configuración y rutas de API
+  config/               Conexión a MySQL
+  routes/               Productos, categorías, pedidos y métricas
+database/               Esquema y volcado SQL inicial
+docs/                   Requisitos, diagramas y documentación
+scripts/                Preparación de base de datos y pruebas de integración
+tests/                  Pruebas automatizadas
+.github/workflows/      Validaciones automáticas
+```
 
 ## Ejecución local
 
-1. Instala Node.js LTS y MySQL Server.
-2. Crea las tablas y datos iniciales ejecutando el archivo database/schema.sql desde MySQL Workbench.
-3. Copia .env.example a .env y configura la conexión local. No subas .env a GitHub. También puedes cargar el esquema con npm run db:setup.
-4. Instala dependencias con npm install.
-5. Ejecuta npm run check y npm test. GitHub Actions valida sintaxis y pruebas estáticas; otro flujo verifica la API, registra un pedido ficticio en MySQL temporal y captura la interfaz con un navegador.
-6. Ejecuta npm run dev.
-7. Abre http://localhost:3000 y comprueba http://localhost:3000/api/health.
+Requisitos: Node.js LTS y MySQL Server.
 
-## Documentación académica
+1. Descargar o clonar el repositorio.
+2. Ejecutar `database/schema.sql` en MySQL Workbench o preparar el esquema mediante el comando `npm run db:setup`.
+3. Copiar `.env.example` a `.env` e indicar las credenciales locales de MySQL. El archivo `.env` está excluido del repositorio.
+4. Instalar las dependencias con `npm install`.
+5. Ejecutar las validaciones mediante `npm run check` y `npm test`.
+6. Iniciar el servidor con `npm run dev`.
+7. Consultar la aplicación en `http://localhost:3000`.
 
-- [Alcance y requisitos](docs/REQUISITOS.md)
+El endpoint `GET /api/health` expone el estado básico del servidor.
+
+## Rutas principales de la API
+
+| Método | Ruta | Función |
+|---|---|---|
+| GET | `/api/health` | Estado del servicio |
+| GET | `/api/categories` | Listado de categorías |
+| GET | `/api/products` | Consulta, búsqueda y filtros de productos |
+| GET | `/api/products/:id` | Detalle de un producto |
+| POST | `/api/orders` | Registro de un pedido de demostración |
+| GET | `/api/admin/summary` | Indicadores de catálogo y pedidos |
+
+## Base de datos
+
+El modelo incluye cinco tablas: `categories`, `products`, `customers`, `orders` y `order_items`. Los archivos `database/schema.sql` y `database/nexora_gaming_export.sql` contienen la definición relacional y los datos iniciales.
+
+## Documentación
+
+- [Requisitos y alcance](docs/REQUISITOS.md)
 - [Mapa de navegación](docs/MAPA-NAVEGACION.md)
-- [Arquitectura](docs/ARQUITECTURA.md)
+- [Arquitectura de software](docs/ARQUITECTURA.md)
+- [Modelo entidad-relación](docs/MODELO-ER.md)
 - [Investigación de librerías JavaScript](docs/INVESTIGACION-LIBRERIAS.md)
 - [Plan de pruebas](docs/PRUEBAS.md)
-- [Manual de uso local](docs/USO-LOCAL.md)
+- [Manual de instalación](docs/USO-LOCAL.md)
 - [Guion de sustentación](docs/GUION-SUSTENTACION.md)
-- [Modelo de base de datos](database/README.md)
-- [Volcado SQL inicial editable](database/nexora_gaming_export.sql)
-- [Modelo entidad–relación](docs/MODELO-ER.md)
+- [Documentación de base de datos](database/README.md)
 
-## Seguridad y alcance
+## Alcance del prototipo
 
-Esta aplicación es un prototipo académico. Antes de manejar pagos reales o datos personales se deben incorporar autenticación y autorización, límites de solicitudes, política de seguridad de contenido apropiada, protección de datos y un proveedor de pagos certificado. El resumen administrativo no está protegido por login, por lo que no debe usarse con datos privados.
+Los precios, existencias y productos son datos ilustrativos. Los pedidos se registran con estado de pago pendiente de demostración y no se realizan cobros ni se entregan claves digitales reales. La autenticación, los roles administrativos, la integración logística, la facturación electrónica y las pasarelas de pago no están incluidos en esta versión.
