@@ -1,35 +1,52 @@
-# Manual de instalación y uso local
+# Manual de instalación y ejecución local
 
 ## Requisitos
-- Node.js LTS instalado.
-- MySQL Server instalado y en ejecución.
-- Git para clonar el repositorio, o descargar un ZIP desde GitHub.
-- Navegador moderno.
 
-## Pasos
-1. Clona el repositorio o descárgalo como ZIP.
-2. Abre la carpeta en Visual Studio Code.
-3. Abre MySQL Workbench y ejecuta el contenido de database/schema.sql, o configura .env y luego corre npm run db:setup.
-4. Copia .env.example como .env en la raíz del proyecto.
-5. Configura DB_USER, DB_PASSWORD y el resto de parámetros según tu MySQL local. No compartas el archivo .env ni lo subas a GitHub.
-6. En la terminal ejecuta npm install.
-7. Ejecuta npm run dev.
-8. Abre http://localhost:3000.
-9. Comprueba http://localhost:3000/api/health.
-10. Para revisar métricas de inventario, abre http://localhost:3000/admin.html.
+- Node.js LTS.
+- MySQL Server.
+- Visual Studio Code u otro editor.
+- Navegador web actualizado.
 
-## Pedido de prueba
-Agrega productos al carrito y completa nombre y correo ficticios. Si MySQL está configurado, el servidor verifica de nuevo los precios y existencias y registra el pedido. La respuesta debe indicar que no hubo cobro real.
+## Instalación
 
-## Exportación de base de datos
-En MySQL Workbench selecciona Server → Data Export, marca el esquema nexora_gaming, elige exportar a archivo autocontenido, escribe un nombre como nexora_gaming_export.sql y ejecuta la exportación. Revisa el archivo y entrega el export editable con el código fuente.
+1. Clonar el repositorio o descargar el código fuente.
+2. Abrir la carpeta del proyecto en el editor.
+3. Crear las tablas y cargar el catálogo inicial. El script `database/schema.sql` puede ejecutarse desde MySQL Workbench.
+4. Crear el archivo local `.env` a partir de `.env.example`.
+5. Configurar el host, el puerto, el usuario, la contraseña y el nombre de la base de datos según la instalación de MySQL.
+6. Instalar las dependencias ejecutando `npm install`.
+7. Verificar el código con `npm run check` y ejecutar las pruebas con `npm test`.
+8. Iniciar la aplicación con `npm run dev`.
+9. Abrir `http://localhost:3000`.
+
+## Preparación automatizada de la base de datos
+
+Con MySQL disponible y las credenciales locales configuradas en `.env`, el comando `npm run db:setup` ejecuta el esquema y los datos iniciales contenidos en `database/schema.sql`.
+
+## Direcciones locales
+
+- Tienda: `http://localhost:3000`
+- Panel de métricas: `http://localhost:3000/admin.html`
+- Estado de la API: `http://localhost:3000/api/health`
+
+## Pedido de demostración
+
+El formulario del carrito recoge nombre, correo, teléfono opcional y notas. La API vuelve a consultar los precios y las existencias antes de crear el pedido. La orden y sus detalles se registran dentro de una transacción y el estado de pago queda establecido como `demo_pending`. No se realiza un cobro.
+
+## Exportación de la base de datos
+
+Desde MySQL Workbench, la opción **Server → Data Export** permite seleccionar el esquema `nexora_gaming` y exportarlo a un archivo SQL autocontenido. El repositorio incluye `database/nexora_gaming_export.sql` con el esquema y el catálogo inicial de demostración.
 
 ## Errores frecuentes
-- ECONNREFUSED: MySQL no está iniciado o el puerto está mal.
-- Access denied: las credenciales locales son incorrectas.
-- Unknown database: no se ejecutó database/schema.sql.
-- Las imágenes externas no cargan: requieren internet; catálogo y controles textuales siguen disponibles.
-- Los pedidos no se guardan: revisa la terminal y la conexión MySQL.
 
-## Seguridad y alcance
-Entrega educativa. No incluye inicio de sesión, roles administrativos, procesamiento de pagos, entrega de claves digitales ni una protección de datos apta para producción. Los endpoints de resumen son demostrativos.
+| Mensaje o síntoma | Causa habitual |
+|---|---|
+| `ECONNREFUSED` | MySQL no está iniciado o el puerto de conexión no coincide. |
+| `Access denied` | Las credenciales configuradas no corresponden al servidor MySQL. |
+| `Unknown database` | El esquema todavía no se ha creado. |
+| El catálogo no carga desde la API | El servidor o la conexión con MySQL no están disponibles. |
+| Las imágenes no se muestran | Las imágenes externas requieren conexión a internet. |
+
+## Consideraciones del prototipo
+
+Los datos del catálogo son ilustrativos. El panel de métricas no cuenta con autenticación y no debe utilizarse para información privada. El sistema no incorpora procesamiento de pagos ni entrega de códigos digitales reales.
