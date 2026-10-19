@@ -4,7 +4,7 @@ const { getPool } = require('../config/database');
 const router = express.Router();
 
 // Panel de métricas de solo lectura para demostración académica.
-// Antes de publicar funciones administrativas, agrega autenticación y autorización.
+// El panel de producción requiere autenticación y autorización.
 router.get('/summary', async (_req, res, next) => {
   try {
     const pool = getPool();
