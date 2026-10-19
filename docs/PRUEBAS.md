@@ -1,34 +1,35 @@
-# Plan de pruebas y registro
+# Plan de pruebas y resultados de automatización
 
-## Entorno previsto
-- Node.js LTS
-- MySQL Server y MySQL Workbench
-- Navegador actualizado
-- Variables de entorno configuradas a partir de .env.example
+## Entorno de pruebas
 
-## Casos manuales
+- Node.js 22 en el flujo automatizado.
+- MySQL 8.4 temporal en GitHub Actions.
+- Navegador Chromium controlado con Playwright para las capturas.
+- Catálogo y pedidos con datos ficticios.
 
-| ID | Caso | Pasos | Resultado esperado |
+## Casos de prueba
+
+| ID | Prueba | Resultado esperado | Ejecución |
 |---|---|---|---|
-| P-01 | Salud de API | Abrir /api/health | JSON con status: ok |
-| P-02 | Catálogo | Abrir el inicio | Se muestran productos de la API o catálogo de reserva |
-| P-03 | Búsqueda | Buscar “monitor” | Solo aparecen coincidencias |
-| P-04 | Filtro | Seleccionar categoría | Catálogo filtrado |
-| P-05 | Ordenamiento | Seleccionar precio ascendente | Productos ordenados por precio |
-| P-06 | Carrito | Agregar producto y cambiar cantidad | Contador y subtotal se actualizan |
-| P-07 | Cantidad excesiva | Superar el stock de demostración | La interfaz rechaza la cantidad |
-| P-08 | Pedido inválido | Enviar un correo no válido | El formulario o API rechaza el dato |
-| P-09 | Pedido válido | Configurar MySQL y crear pedido de prueba | Orden y detalles guardados; sin cobro |
-| P-10 | Stock insuficiente | Pedir unidades por encima del stock físico | API responde conflicto y no crea pedido parcial |
-| P-11 | Base no configurada | Intentar consultar API | La interfaz informa de la reserva del catálogo; la persistencia no se finge |
-| P-12 | Móvil | Revisar pantalla estrecha | Navegación y tarjetas se adaptan |
+| P-01 | Estado de la API | HTTP 200 y estado `ok` | Automatizada |
+| P-02 | Consulta de categorías | HTTP 200 y lista de categorías | Automatizada |
+| P-03 | Consulta de productos | HTTP 200 y lista de productos | Automatizada |
+| P-04 | Correo inválido en un pedido | HTTP 400 y rechazo de la solicitud | Automatizada |
+| P-05 | Pedido válido de demostración | HTTP 201 y número de orden | Automatizada |
+| P-06 | Estado del pago | El pedido queda como `demo_pending` | Automatizada |
+| P-07 | Métricas del panel | Indicadores consultados desde la API | Automatizada |
+| P-08 | Sintaxis JavaScript | Ningún error de análisis sintáctico en los archivos revisados | GitHub Actions |
+| P-09 | Estructura y esquema | Existencia de archivos, tablas y relaciones principales | Node.js test runner |
+| P-10 | Interfaz | Capturas de inicio, catálogo y panel | Playwright |
 
 ## Resultados
-Completar esta sección únicamente después de ejecutar cada caso. No marcar pruebas como aprobadas sin haberlas ejecutado.
 
-| Caso | Resultado | Evidencia / fecha |
-|---|---|---|
-| Pendiente de ejecución local | Pendiente | Completar durante la comprobación final |
+El flujo **Project checks** ha completado las comprobaciones de sintaxis y las pruebas de estructura. El flujo **End-to-end demo capture** ha ejecutado la aplicación junto a una instancia temporal de MySQL, ha registrado un pedido ficticio pendiente de pago y ha generado capturas del frontend y del panel.
 
-## Pruebas automatizadas
-El comando npm test comprueba condiciones estáticas y artefactos esenciales. No reemplaza pruebas manuales con MySQL, navegador ni pruebas de integración de extremo a extremo.
+Estas pruebas verifican el recorrido automatizado definido para el prototipo. No incluyen pruebas de carga, auditoría de seguridad, pasarela de pagos ni validación comercial de los productos.
+
+## Comandos disponibles
+
+- `npm run check`: revisión de sintaxis de archivos JavaScript.
+- `npm test`: pruebas estructurales con el ejecutor de pruebas nativo de Node.js.
+- `npm run db:setup`: creación del esquema y carga de datos de demostración.
