@@ -21,7 +21,7 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 ## Alcance funcional
 
 - Página de inicio y navegación por secciones.
-- Catálogo organizado en nueve categorías y un conjunto de 20 productos de demostración.
+- Catálogo organizado en diez categorías y un conjunto de 20 productos de demostración.
 - Búsqueda por nombre, descripción o categoría.
 - Filtro por categoría y ordenamiento por precio o nombre.
 - Vista detallada del producto seleccionado.
@@ -54,6 +54,7 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 - **RF-10:** Mantener separado el estado del pedido del estado del pago.
 - **RF-11:** Consultar categorías y métricas de catálogo mediante la API.
 - **RF-12:** Mostrar un estado adecuado cuando el catálogo remoto no está disponible.
+- **RF-13:** Mostrar el detalle del producto seleccionado, con descripción, precio, categoría y disponibilidad de demostración.
 
 ## Requisitos no funcionales
 
