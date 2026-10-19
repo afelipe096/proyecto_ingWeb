@@ -167,6 +167,44 @@
     });
   }
 
+
+  function showProductDetail(productId) {
+    const product = state.products.find((item) => Number(item.id) === Number(productId));
+    if (!product) return;
+
+    const isDigital = product.product_type === 'digital';
+    $('#product-detail-content').innerHTML = `
+      <div class="product-detail-layout">
+        <div class="product-detail-photo">
+          <img src="${escapeHtml(product.image_url || '')}" alt="${escapeHtml(product.name)}">
+          <span class="product-badge ${isDigital ? 'digital' : ''}">${isDigital ? 'DIGITAL' : 'PRODUCTO FÍSICO'}</span>
+        </div>
+        <div class="product-detail-copy">
+          <div class="dialog-heading">
+            <div class="eyebrow">${escapeHtml(product.category_name || 'Tecnología')}</div>
+            <button type="button" class="close-cart" data-close-detail aria-label="Cerrar detalles">×</button>
+          </div>
+          <h2 id="product-detail-title">${escapeHtml(product.name)}</h2>
+          <p class="product-detail-description">${escapeHtml(product.description || 'Producto del catálogo de demostración.')}</p>
+          <div class="product-detail-price">${money(product.price)}</div>
+          <p class="product-detail-stock">${isDigital ? 'Producto digital de demostración; no se entrega una clave real.' : `${Number(product.stock) || 0} unidades de demostración en inventario.`}</p>
+          <button type="button" class="button button-primary detail-add-button" data-detail-add="${Number(product.id)}">Agregar al carrito <span>→</span></button>
+          <small>Precio y disponibilidad ilustrativos. No se procesa ningún pago.</small>
+        </div>
+      </div>`;
+
+    const dialog = $('#product-detail-dialog');
+    attachImageFallbacks($('#product-detail-content'));
+    $('#product-detail-content').querySelector('[data-close-detail]')
+      .addEventListener('click', () => dialog.close());
+    $('#product-detail-content').querySelector('[data-detail-add]')
+      .addEventListener('click', () => {
+        addToCart(Number(product.id));
+        dialog.close();
+      });
+    dialog.showModal();
+  }
+
   function renderProducts() {
     const products = getVisibleProducts();
     $('#catalog-count').textContent = `${products.length} ${products.length === 1 ? 'producto' : 'productos'} disponibles`;
@@ -193,10 +231,7 @@
     $('#product-grid').querySelectorAll('[data-add]').forEach((button) =>
       button.addEventListener('click', () => addToCart(Number(button.dataset.add))));
     $('#product-grid').querySelectorAll('[data-detail]').forEach((button) =>
-      button.addEventListener('click', () => {
-        const product = state.products.find((item) => item.id === Number(button.dataset.detail));
-        if (product) toast(`${product.name} · ${money(product.price)} · Producto de demostración`);
-      }));
+      button.addEventListener('click', () => showProductDetail(Number(button.dataset.detail))));
   }
 
   function getCartDetails() {
