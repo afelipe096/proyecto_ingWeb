@@ -27,7 +27,7 @@ El catálogo contiene 20 productos de demostración con precios y existencias il
 
 ## Funcionalidades principales
 
-- Catálogo de productos organizado por categorías.
+- Catálogo de productos organizado por categorías, con una vista detallada de cada artículo.
 - Búsqueda por nombre, descripción o categoría.
 - Filtro por categoría y ordenamiento por nombre o precio.
 - Carrito con cantidades, eliminación de productos y cálculo de subtotal.
