@@ -1,14 +1,14 @@
 # Arquitectura de software
 
-## Estilo
+## Estilo arquitectónico
 
-La solución utiliza una arquitectura web de tres capas lógicas (frontend, backend/API y base de datos). El navegador no se conecta directamente a MySQL: envía solicitudes HTTP al servidor Express, que valida los datos y consulta la base de datos mediante el controlador mysql2.
+Nexora Gaming & Tech utiliza una arquitectura web de tres capas lógicas: presentación, aplicación y persistencia. El navegador no accede directamente a MySQL; consume una API REST implementada con Express, que procesa las solicitudes y ejecuta las consultas necesarias.
 
 ## Diagrama de componentes
 
 ```mermaid
 flowchart TD
-    U[Usuario / Navegador]
+    U[Usuario / navegador]
     subgraph Frontend
       HTML[HTML5]
       CSS[CSS3 responsive]
@@ -18,17 +18,17 @@ flowchart TD
       CSS --- HTML
       JS --> CART
     end
-    subgraph Backend[Servidor Node.js + Express]
-      STATIC[Archivos estáticos]
+    subgraph Backend[Node.js y Express]
+      STATIC[Servidor de archivos estáticos]
       API[API REST]
-      VALID[Validaciones de entrada]
-      ROUTES[Rutas: productos, categorías, pedidos, resumen]
-      DBMOD[Controlador de conexión mysql2]
+      VALID[Validación de entrada]
+      ROUTES[Rutas de productos, categorías, pedidos y métricas]
+      DBMOD[Conexión mysql2]
       API --> VALID --> ROUTES --> DBMOD
     end
     subgraph Persistencia
       MYSQL[(MySQL)]
-      TABLES[Categorías, productos, clientes, pedidos, detalles]
+      TABLES[Categorías, productos, clientes, pedidos y detalles]
       MYSQL --- TABLES
     end
     U --> HTML
@@ -37,24 +37,25 @@ flowchart TD
     DBMOD -- SQL parametrizado --> MYSQL
 ```
 
-## Comunicación
+## Comunicación entre capas
 
-1. El navegador descarga el HTML, CSS y JavaScript servidos por Express.
-2. El cliente solicita productos y categorías con `fetch`, recibiendo JSON.
-3. El backend valida parámetros, utiliza consultas parametrizadas y devuelve respuestas HTTP.
-4. Para crear pedidos, el servidor vuelve a consultar precios y existencias, y registra cabecera y detalles en una transacción.
-5. MySQL persiste los registros. Las credenciales se leen desde variables de entorno y no deben subirse al repositorio.
+1. Express entrega los archivos de la interfaz.
+2. JavaScript solicita categorías y productos mediante Fetch API.
+3. La API valida los parámetros y responde en formato JSON.
+4. El servidor vuelve a consultar precios y existencias cuando se registra un pedido.
+5. MySQL almacena los datos y garantiza la consistencia de la operación mediante transacciones.
 
-## Decisiones técnicas
+## Decisiones de diseño
 
-- HTML, CSS y JavaScript sin framework de interfaz para hacer visible el uso de las tecnologías de la asignatura.
-- Express simplifica las rutas del servidor.
-- MySQL permite modelar relaciones entre categorías, productos, clientes, pedidos y detalles.
-- Las consultas parametrizadas reducen el riesgo de inyección SQL.
-- Las transacciones permiten guardar el pedido y sus ítems de forma consistente.
-- El carrito permanece en localStorage del navegador; la información definitiva del pedido se calcula y valida en el servidor.
-- Helmet agrega cabeceras HTTP de seguridad. La configuración actual desactiva CSP para permitir el prototipo; esta política debe definirse adecuadamente antes de producción.
+- HTML5, CSS3 y JavaScript permiten mostrar directamente la estructura y la lógica del frontend.
+- Express organiza los endpoints y centraliza el manejo de solicitudes.
+- mysql2 proporciona la conexión entre Node.js y MySQL y admite consultas parametrizadas.
+- Las transacciones agrupan la cabecera del pedido, los detalles y la actualización de existencias.
+- El carrito se mantiene en localStorage; el precio definitivo se consulta en el backend.
+- dotenv mantiene la configuración local fuera del código versionado.
+- Helmet define cabeceras HTTP y una política de seguridad de contenido compatible con los recursos utilizados.
+- CORS no habilita orígenes externos por defecto; los orígenes adicionales se configuran mediante la variable `CORS_ORIGINS`.
 
 ## Limitaciones
 
-No se incluye autenticación de administrador ni pago real. El endpoint de resumen es público y de solo lectura para la demostración, por lo que no debe publicarse con datos comerciales. Imágenes externas y Google Fonts requieren conexión a internet.
+El panel de métricas es de lectura y no tiene autenticación ni control de roles. El prototipo no incorpora pasarela de pago, facturación electrónica, logística ni entrega de códigos digitales reales. Las imágenes y fuentes externas requieren conexión a internet.
