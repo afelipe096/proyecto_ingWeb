@@ -54,12 +54,13 @@ test('la API valida pedidos y gestiona la transacción', () => {
 test('la interfaz incluye búsqueda, filtros y carrito', () => {
   const html = read('public/index.html');
   const js = read('public/js/app.js');
-  for (const id of ['search-input', 'category-filter', 'sort-filter', 'cart-count', 'cart-drawer', 'checkout-form']) {
+  for (const id of ['search-input', 'category-filter', 'sort-filter', 'cart-count', 'cart-drawer', 'checkout-form', 'product-detail-dialog']) {
     assert.ok(html.includes('id="' + id + '"'), 'No se encontró el control ' + id);
   }
   assert.match(js, /localStorage/);
   assert.match(js, /renderProducts/);
   assert.match(js, /submitOrder/);
+  assert.match(js, /showProductDetail/);
   assert.match(js, /attachImageFallbacks/);
   assert.doesNotMatch(js, /onerror=/i);
 });
