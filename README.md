@@ -12,7 +12,7 @@ Desarrollar una aplicación web que integre una interfaz de comercio electrónic
 
 ## Categorías del catálogo
 
-- Juegos digitales y tarjetas de regalo
+- Juegos digitales
 - Consolas y accesorios
 - Audio y streaming
 - Monitores y pantallas
@@ -21,6 +21,7 @@ Desarrollar una aplicación web que integre una interfaz de comercio electrónic
 - Periféricos
 - Cables y energía
 - Almacenamiento y redes
+- Tarjetas de regalo
 
 El catálogo contiene 20 productos de demostración con precios y existencias ilustrativos.
 
