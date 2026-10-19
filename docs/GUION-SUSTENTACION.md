@@ -20,7 +20,7 @@ El alcance incluye el catálogo, los filtros, el carrito, el panel de métricas 
 
 **Página principal y catálogo.** La página de inicio presenta la identidad visual, las categorías y los productos destacados. En el catálogo se puede buscar por texto, filtrar por categoría y ordenar por nombre o precio.
 
-**Carrito.** Al agregar un producto, el contador se actualiza y el carrito permite modificar cantidades o eliminar artículos. El subtotal se recalcula con base en la selección actual.
+**Detalle y carrito.** La ficha de producto presenta su descripción, categoría, precio y disponibilidad ilustrativa. Desde esa vista se puede agregar el artículo al carrito. El contador se actualiza y el carrito permite modificar cantidades o eliminar artículos; el subtotal se recalcula con base en la selección actual.
 
 **Registro de pedido.** El formulario solicita nombre y correo. El servidor valida la información, consulta los precios y existencias en la base de datos y registra el pedido y sus detalles dentro de una transacción. La respuesta incluye un número de pedido y el estado de pago de demostración.
 
