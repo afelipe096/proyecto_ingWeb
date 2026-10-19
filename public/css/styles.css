@@ -2,3 +2,9 @@
 
 /* Fallback visual para imágenes externas no disponibles. */
 .product-image-wrap img.image-error,.cart-item img.image-error{opacity:.22}
+
+/* Página de error 404 */
+.not-found{min-height:calc(100vh - 180px);display:grid;place-items:center;text-align:center;padding:50px 24px}
+.not-found-code{font:700 clamp(72px,15vw,150px)/.9 var(--display);letter-spacing:-.09em;color:var(--accent)}
+.not-found h1{font:600 clamp(28px,4vw,42px)/1.1 var(--display);letter-spacing:-.05em;margin:22px 0 10px}
+.not-found p{color:var(--muted);max-width:440px;margin:0 auto 24px}
