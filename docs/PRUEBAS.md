@@ -20,11 +20,16 @@
 | P-07 | Métricas del panel | Indicadores consultados desde la API | Automatizada |
 | P-08 | Sintaxis JavaScript | Ningún error de análisis sintáctico en los archivos revisados | GitHub Actions |
 | P-09 | Estructura y esquema | Existencia de archivos, tablas y relaciones principales | Node.js test runner |
-| P-10 | Interfaz | Capturas de inicio, catálogo y panel | Playwright |
+| P-10 | Interfaz | Capturas de inicio, catálogo, detalle, carrito y panel | Playwright |
+| P-11 | Búsqueda | La búsqueda por texto muestra coincidencias | Playwright |
+| P-12 | Filtro por categoría | El listado muestra artículos de la categoría seleccionada | Playwright |
+| P-13 | Detalle del producto | El diálogo presenta la información y permite agregar el artículo al carrito | Playwright |
+| P-14 | Carrito | El contador y el panel lateral reflejan el artículo agregado | Playwright |
+| P-15 | Catálogo completo | La vista sin filtros contiene 20 productos de demostración | Playwright |
 
 ## Resultados
 
-El flujo **Project checks** ha completado las comprobaciones de sintaxis y las pruebas de estructura. El flujo **End-to-end demo capture** ha ejecutado la aplicación junto a una instancia temporal de MySQL, ha registrado un pedido ficticio pendiente de pago y ha generado capturas del frontend y del panel.
+El flujo **Project checks** ha completado las comprobaciones de sintaxis y las pruebas de estructura. El flujo **End-to-end demo capture** ha ejecutado la aplicación junto a una instancia temporal de MySQL, ha registrado un pedido ficticio pendiente de pago ha comprobado la búsqueda, el filtro de categoría, el detalle de producto y el carrito, y ha generado capturas del frontend y del panel.
 
 Estas pruebas verifican el recorrido automatizado definido para el prototipo. No incluyen pruebas de carga, auditoría de seguridad, pasarela de pagos ni validación comercial de los productos.
 
