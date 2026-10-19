@@ -3,8 +3,7 @@ const { getPool } = require('../config/database');
 
 const router = express.Router();
 
-// Panel de métricas de solo lectura para demostración académica.
-// El panel de producción requiere autenticación y autorización.
+// Panel de métricas de solo lectura para el conjunto de datos de demostración.
 router.get('/summary', async (_req, res, next) => {
   try {
     const pool = getPool();
