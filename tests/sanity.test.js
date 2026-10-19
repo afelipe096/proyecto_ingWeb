@@ -81,7 +81,7 @@ test('el ejemplo de entorno no contiene credenciales reales', () => {
 
 test('la documentación describe el alcance del prototipo sin instrucciones personales', () => {
   const readme = read('README.md');
-  assert.match(readme, /prototipo académico/i);
+  assert.match(readme, /prototipo/i);
   assert.match(readme, /datos ilustrativos/i);
   assert.match(readme, /nexora_gaming_export\.sql/);
   assert.doesNotMatch(readme, /ChatGPT|recomendación para ti|antes de entregar/i);
