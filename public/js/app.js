@@ -64,7 +64,17 @@
       ['Teclado mecánico RGB','teclado-mecanico-rgb','Periféricos','perifericos',229900,'physical','Teclado de prueba con iluminación RGB.','https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=80',12,false],
       ['Hub USB-C multipuerto','hub-usbc-multipuerto','Cables y energía','cables-energia',119900,'physical','Accesorio de conectividad de demostración.','https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=80',20,false],
       ['SSD externo 1 TB','ssd-externo-1tb','Almacenamiento y redes','almacenamiento-redes',329900,'physical','Almacenamiento externo de ejemplo.','https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80',10,false],
-      ['Tarjeta de regalo digital','tarjeta-regalo-digital','Tarjetas de regalo','tarjetas-regalo',50000,'digital','Producto digital de demostración, sin saldo real.','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',30,false]
+      ['Tarjeta de regalo digital','tarjeta-regalo-digital','Tarjetas de regalo','tarjetas-regalo',50000,'digital','Producto digital de demostración, sin saldo real.','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',30,false],
+      ['Licencia de juego independiente (demo)','licencia-juego-independiente-demo','Juegos digitales','juegos-digitales',35900,'digital','Registro digital simulado; no incluye una clave de activación real.','https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80',80,false],
+      ['Base de carga para controles','base-carga-controles','Consolas y accesorios','consolas-accesorios',89900,'physical','Base de carga de ejemplo para mandos inalámbricos.','https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=900&q=80',9,false],
+      ['Micrófono USB para streaming','microfono-usb-streaming','Audio y streaming','audio-streaming',169900,'physical','Micrófono ilustrativo para grabación y transmisión.','https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=900&q=80',8,false],
+      ['Monitor IPS 24 pulgadas','monitor-ips-24','Monitores y pantallas','monitores-pantallas',599900,'physical','Monitor de muestra para trabajo, estudio y juego.','https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80',5,false],
+      ['Memoria RAM DDR5 32 GB','memoria-ram-ddr5-32gb','Computadores y componentes','computadores-componentes',429900,'physical','Componente ilustrativo para una configuración de PC.','https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80',11,false],
+      ['Escritorio gamer compacto','escritorio-gamer-compacto','Sillas y escritorios','sillas-escritorios',499900,'physical','Escritorio de muestra para espacios de juego y trabajo.','https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=900&q=80',3,false],
+      ['Mouse gamer de alta precisión','mouse-gamer-alta-precision','Periféricos','perifericos',99900,'physical','Ratón de demostración con ajustes de precisión.','https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=80',22,false],
+      ['Cargador USB-C de 65 W','cargador-usbc-65w','Cables y energía','cables-energia',139900,'physical','Cargador de muestra para dispositivos compatibles.','https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80',15,false],
+      ['Router Wi-Fi 6','router-wifi-6','Almacenamiento y redes','almacenamiento-redes',259900,'physical','Equipo de red de demostración.','https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80',6,false],
+      ['Tarjeta de regalo digital 100.000','tarjeta-regalo-digital-100000','Tarjetas de regalo','tarjetas-regalo',100000,'digital','Saldo digital ficticio para mostrar la categoría; no es canjeable.','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',40,false]
     ];
     return {
       categories: cats.map(([name, slug]) => ({ name, slug })),
@@ -98,7 +108,7 @@
 
   function renderCategories() {
     const grid = $('#category-grid');
-    const symbols = ['▣','▥','♫','▦','⌘','▤','⌨','⌁','◫','◇'];
+    const symbols = ['01','02','03','04','05','06','07','08','09','10'];
     grid.innerHTML = state.categories.slice(0, 4).map((category, index) => `
       <button class="category-tile ${['category-games','category-setup','category-audio','category-hardware'][index % 4]}" data-category="${escapeHtml(category.slug)}">
         <span class="category-art">${symbols[index % symbols.length]}</span>
