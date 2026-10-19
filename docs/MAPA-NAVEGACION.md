@@ -15,19 +15,21 @@ flowchart TD
     F --> I[Resultados]
     G --> I
     H --> I
-    I --> J[Agregar al carrito]
-    J --> K[Carrito lateral]
-    K --> L[Editar cantidad / eliminar]
-    L --> K
-    K --> M[Formulario de pedido]
-    M --> N[Pedido de demostración]
-    N --> O[Confirmación con número de pedido]
+    I --> J[Detalle del producto]
+    J --> K[Agregar al carrito]
+    K --> L[Carrito lateral]
+    L --> M[Editar cantidad / eliminar]
+    M --> L
+    L --> N[Formulario de pedido]
+    N --> O[Pedido de demostración]
+    O --> P[Confirmación con número de pedido]
 ```
 
 ## Descripción
 
 - **Inicio:** presentación, accesos a categorías, productos destacados y descripción del proyecto.
 - **Catálogo:** búsqueda por nombre/descripción, filtro por categoría y opciones de ordenamiento.
+- **Detalle del producto:** muestra categoría, descripción, precio y disponibilidad de demostración; permite agregar el artículo al carrito.
 - **Categorías:** accesos rápidos que preseleccionan un filtro.
 - **Carrito:** muestra referencias, cantidades y subtotal; permite modificar o retirar productos.
 - **Formulario de pedido:** recoge nombre y correo, valida los campos y envía una solicitud a la API.
@@ -46,4 +48,4 @@ flowchart TD
 | POST | `/api/orders` | Crear un pedido de demostración |
 | GET | `/api/admin/summary` | Consultar métricas de solo lectura |
 
-El flujo dibujado representa la navegación funcional propuesta. La administración completa, autenticación y pago real no forman parte del alcance inicial.
+El flujo dibujado representa la navegación funcional de la aplicación. La administración completa, autenticación y pago real no forman parte del alcance inicial.
