@@ -1,45 +1,47 @@
-# Guion de sustentación — máximo 10 minutos
+# Guion de sustentación — Nexora Gaming & Tech
 
-Ajustar el guion con los nombres reales de los integrantes. No afirmar que una funcionalidad funciona hasta comprobarla en la ejecución.
+**Duración total:** 10 minutos  
+**Proyecto:** Plataforma web de comercio electrónico de tecnología y gaming  
+**Tecnologías:** HTML5, CSS3, JavaScript, Node.js, Express y MySQL
 
-## 0:00–1:15 · Presentación y problema
+## 0:00–1:15 | Presentación y problema
 
-“Presentamos Nexora Gaming & Tech, un prototipo de comercio electrónico centrado en productos tecnológicos y gaming. La idea es reunir en una sola interfaz categorías como juegos digitales, consolas, computadores, periféricos, audio, pantallas, sillas y conectividad. El usuario puede explorar el catálogo, encontrar productos y organizar una selección en el carrito. Para esta entrega nos concentramos en la experiencia de navegación, la estructura de software y el registro de pedidos de demostración.”
+“Buenos días. Presentamos Nexora Gaming & Tech, una aplicación web orientada a la consulta y selección de productos tecnológicos y gaming. El catálogo reúne juegos digitales de demostración, consolas, controles, periféricos, audio, monitores, computadores, mobiliario, cables y accesorios.
 
-## 1:15–2:00 · Objetivos y alcance
+El proyecto aborda la necesidad de organizar distintas categorías en una sola interfaz, con herramientas de búsqueda y filtrado y un flujo claro para seleccionar productos y registrar pedidos.”
 
-“El objetivo es desarrollar una tienda web con HTML5, CSS3 y JavaScript, un backend Node.js con Express y persistencia en MySQL. El alcance incluye catálogo, búsqueda, filtros, ordenamiento, carrito y registro de pedidos de prueba. No se procesa ningún pago real ni se entregan códigos auténticos de juegos.”
+## 1:15–2:00 | Objetivo y alcance
 
-## 2:00–5:30 · Demostración
+“El objetivo es desarrollar una aplicación web que integre el frontend, una API REST y una base de datos relacional. La interfaz está construida con HTML5, CSS3 y JavaScript; el servidor utiliza Node.js y Express; y MySQL almacena las categorías, productos, clientes y pedidos.
 
-1. Mostrar la página de inicio y sus secciones.
-2. Entrar al catálogo y demostrar búsqueda por una palabra.
-3. Filtrar por una categoría y ordenar por precio.
-4. Agregar uno o dos productos al carrito, cambiar la cantidad y explicar el subtotal.
-5. Abrir el formulario del pedido y demostrar validación de campos.
-6. Si el servidor y MySQL están configurados, enviar el pedido y mostrar el número de confirmación.
-7. Si la base de datos todavía no está configurada, mostrar el fallback del catálogo y explicar honestamente que la persistencia requiere ejecutar el servidor y el script SQL.
+El alcance incluye el catálogo, los filtros, el carrito, el panel de métricas y el registro de pedidos de demostración. No se realizan cobros ni se entregan claves de juegos reales.”
 
-## 5:30–7:30 · Arquitectura y navegación
+## 2:00–5:30 | Demostración de la aplicación
 
-“Separamos la solución en tres capas lógicas. La interfaz se ejecuta en el navegador; consume una API REST de Express; y el backend consulta MySQL. Esto evita exponer credenciales de base de datos en el navegador. El mapa de navegación representa el recorrido desde el inicio y el catálogo hasta el carrito y el registro del pedido.”
+**Página principal y catálogo.** La página de inicio presenta la identidad visual, las categorías y los productos destacados. En el catálogo se puede buscar por texto, filtrar por categoría y ordenar por nombre o precio.
 
-## 7:30–8:45 · Decisiones técnicas
+**Carrito.** Al agregar un producto, el contador se actualiza y el carrito permite modificar cantidades o eliminar artículos. El subtotal se recalcula con base en la selección actual.
 
-“Elegimos JavaScript para la interacción del catálogo y carrito. Express organiza los endpoints REST; mysql2 permite conectarnos con MySQL usando consultas parametrizadas. Dotenv mantiene las credenciales fuera del código versionado y Helmet ayuda a configurar cabeceras de seguridad. El carrito usa localStorage, mientras que precios y existencias del pedido se verifican de nuevo en el servidor.”
+**Registro de pedido.** El formulario solicita nombre y correo. El servidor valida la información, consulta los precios y existencias en la base de datos y registra el pedido y sus detalles dentro de una transacción. La respuesta incluye un número de pedido y el estado de pago de demostración.
 
-## 8:45–9:40 · Aprendizajes y limitaciones
+**Panel de métricas.** La vista administrativa muestra cantidades de productos, categorías, pedidos, existencias y una gráfica de productos por categoría.
 
-“El aprendizaje principal fue integrar la interfaz con una API y una base de datos, separar responsabilidades y validar los datos tanto en cliente como en servidor. El proyecto sigue siendo un prototipo: no cuenta con pasarela de pago ni con autenticación de administrador. Estas serían mejoras futuras antes de utilizar información o transacciones reales.”
+## 5:30–7:30 | Arquitectura y navegación
 
-## 9:40–10:00 · Cierre
+“La solución se organiza en tres capas lógicas. La primera es el frontend, donde se encuentran las páginas, los estilos y la lógica de interacción. La segunda es el backend, desarrollado con Express, que expone endpoints REST y valida las solicitudes. La tercera es la persistencia, implementada en MySQL.
 
-“En conclusión, Nexora demuestra el flujo base de una tienda tecnológica: explorar el catálogo, seleccionar productos y crear un pedido de demostración. Gracias.”
+El navegador se comunica con la API mediante solicitudes HTTP y respuestas JSON. El servidor utiliza consultas parametrizadas para consultar y modificar los datos. El diagrama y el mapa de navegación representan la relación entre las pantallas y los componentes principales.”
 
-## Comprobaciones antes de grabar
+## 7:30–8:45 | Decisiones técnicas
 
-- Ejecutar el servidor desde un entorno local y verificar `/api/health`.
-- Comprobar búsqueda, filtros, carrito y validación.
-- Conectar MySQL, insertar datos iniciales y crear un pedido de prueba.
-- Revisar ortografía, datos de autores y nombre del equipo.
-- Grabar pantalla con voz clara, sin mostrar contraseñas ni datos personales.
+“HTML5 estructura el contenido y CSS3 establece el diseño responsive. JavaScript permite manejar la búsqueda, los filtros, el carrito y las solicitudes a la API. Express organiza las rutas del servidor; mysql2 conecta Node.js con MySQL; dotenv separa la configuración local del código fuente; y Helmet establece cabeceras de seguridad HTTP. Chart.js se utiliza en el panel para visualizar la distribución de productos por categoría.”
+
+## 8:45–9:40 | Validación y limitaciones
+
+“El proyecto cuenta con comprobaciones automáticas de sintaxis y estructura. El flujo de integración ejecuta la API con una base MySQL temporal, consulta productos y categorías, verifica el rechazo de datos inválidos y registra un pedido ficticio pendiente de pago. También se generan capturas del sitio en un navegador automatizado.
+
+El alcance actual corresponde a un prototipo académico. No incluye autenticación administrativa, pasarela de pagos ni entrega real de productos digitales.”
+
+## 9:40–10:00 | Cierre
+
+“En conclusión, Nexora Gaming & Tech integra la navegación del catálogo, la gestión del carrito y el registro de pedidos de demostración en una arquitectura de tres capas. El proyecto aplica los conceptos de desarrollo web, consumo de API, persistencia relacional y validación de datos. Muchas gracias.”
