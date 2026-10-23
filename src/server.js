@@ -30,7 +30,7 @@ app.use(helmet({
       objectSrc: ["'none'"],
       scriptSrc: ["'self'", 'https://cdn.jsdelivr.net'],
       styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-      connectSrc: ["'self'"],
+      connectSrc: ["'self'", 'https://geocoding-api.open-meteo.com'],
       upgradeInsecureRequests: null
     }
   }

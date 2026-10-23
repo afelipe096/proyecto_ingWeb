@@ -16,6 +16,9 @@ test('el proyecto incluye frontend, API, base de datos y documentación', () => 
     'public/index.html',
     'public/css/styles.css',
     'public/js/app.js',
+    'public/js/actividad6.js',
+    'docs/ACTIVIDAD-6-DOM-FETCH.md',
+    'docs/GUION-VIDEO-ACTIVIDAD-6.md',
     'public/admin.html',
     'public/js/admin.js',
     'public/404.html',
@@ -86,4 +89,24 @@ test('la documentación describe el alcance del prototipo sin instrucciones pers
   assert.match(readme, /datos ilustrativos/i);
   assert.match(readme, /nexora_gaming_export\.sql/);
   assert.doesNotMatch(readme, /ChatGPT|recomendación para ti|antes de entregar/i);
+});
+
+
+test('la Actividad 6 implementa validación en tiempo real y consulta asíncrona', () => {
+  const html = read('public/index.html');
+  const activity = read('public/js/actividad6.js');
+  const server = read('src/server.js');
+  for (const id of ['setup-name', 'setup-email', 'setup-budget', 'setup-form-status', 'location-search-form', 'location-results']) {
+    assert.ok(html.includes('id="' + id + '"'), 'Falta el control de la actividad ' + id);
+  }
+  assert.match(activity, /querySelectorAll\('\[data-validate\]'\)/);
+  assert.match(activity, /addEventListener\('input'/);
+  assert.match(activity, /addEventListener\('submit'/);
+  assert.match(activity, /async \(event\)/);
+  assert.match(activity, /await fetch\(url/);
+  assert.match(activity, /await response\.json\(\)/);
+  assert.match(activity, /catch \(error\)/);
+  assert.match(activity, /replaceChildren\(\)/);
+  assert.match(activity, /aria-invalid/);
+  assert.match(server, /https:\/\/geocoding-api\.open-meteo\.com/);
 });

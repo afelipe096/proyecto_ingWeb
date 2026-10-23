@@ -7,6 +7,7 @@ flowchart TD
     A[Inicio / Nexora] --> B[Catálogo]
     A --> C[Categorías]
     A --> D[Sobre nosotros]
+    A --> X[Laboratorio / Cotiza tu setup]
     A --> P[Panel de demostración]
     C --> E[Catálogo filtrado por categoría]
     B --> F[Buscar producto]
@@ -23,6 +24,10 @@ flowchart TD
     L --> N[Formulario de pedido]
     N --> O[Pedido de demostración]
     O --> P[Confirmación con número de pedido]
+    X --> Q[Validación del formulario]
+    X --> R[Búsqueda de ciudad]
+    R --> S[Consulta externa con Fetch API]
+    S --> T[Resultados o mensaje de error]
 ```
 
 ## Descripción
@@ -35,6 +40,8 @@ flowchart TD
 - **Formulario de pedido:** recoge nombre y correo, valida los campos y envía una solicitud a la API.
 - **Confirmación:** comunica el número del pedido de prueba e indica que no se procesó ningún pago.
 - **Sobre nosotros:** explica la finalidad del prototipo.
+- **Laboratorio / Cotiza tu setup:** contiene un formulario con validación en tiempo real para nombre, correo y presupuesto; la confirmación es local y no envía datos personales.
+- **Búsqueda de ciudad:** consulta Open-Meteo Geocoding API mediante Fetch y async/await, y presenta resultados, ausencia de coincidencias o mensajes ante errores.
 - **Panel de demostración:** ruta independiente admin.html que muestra métricas de catálogo, pedidos y unidades mediante la API; es de lectura y no tiene autenticación.
 
 ## Rutas de API
@@ -48,4 +55,4 @@ flowchart TD
 | POST | `/api/orders` | Crear un pedido de demostración |
 | GET | `/api/admin/summary` | Consultar métricas de solo lectura |
 
-El flujo dibujado representa la navegación funcional de la aplicación. La administración completa, autenticación y pago real no forman parte del alcance inicial.
+El flujo dibujado representa la navegación funcional de la aplicación, incluido el laboratorio de DOM y asincronía. La sección geográfica es informativa y no confirma cobertura de envíos. La administración completa, autenticación y pago real no forman parte del alcance inicial.

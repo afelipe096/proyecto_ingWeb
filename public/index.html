@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <script src="/js/app.js" defer></script>
+  <script src="/js/actividad6.js" defer></script>
 </head>
 <body>
   <div class="announcement">NEXORA LAB <span>·</span> Tu próximo upgrade empieza aquí <span class="announcement-tag">PROYECTO ACADÉMICO</span></div>
@@ -20,7 +21,7 @@
     </a>
     <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">MENU</button>
     <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#categorias">Categorías</a><a href="#nosotros">Sobre nosotros</a>
+      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#categorias">Categorías</a><a href="#nosotros">Sobre nosotros</a><a href="#cotiza-setup">Laboratorio</a>
     </nav>
     <div class="header-actions">
       <button class="icon-button" id="search-focus" aria-label="Buscar productos">⌕</button>
@@ -72,7 +73,67 @@
       <div class="catalog-foot"><span>Precios ilustrativos en pesos colombianos (COP).</span><button class="button button-outline" id="show-all">Ver todos los productos <span>→</span></button></div>
     </section>
 
-    <section class="promo-section section-wrap" id="nosotros">
+    <section class="activity-lab-section section-wrap" id="cotiza-setup" aria-labelledby="activity-lab-title">
+    <div class="section-heading activity-heading">
+      <div>
+        <div class="eyebrow">LABORATORIO / ACTIVIDAD 06</div>
+        <h2 id="activity-lab-title">Planifica tu <span>próximo setup.</span></h2>
+        <p class="section-description">Valida los datos en el navegador y consulta ubicaciones mediante una API REST pública.</p>
+      </div>
+      <p class="activity-tag">DOM · FETCH API · ASYNC/AWAIT</p>
+    </div>
+
+    <div class="activity-lab-grid">
+      <article class="activity-panel">
+        <div class="activity-panel-heading">
+          <span class="activity-index">01</span>
+          <div><div class="eyebrow">VALIDACIÓN EN TIEMPO REAL</div><h3>Define tu presupuesto</h3></div>
+        </div>
+        <p class="activity-panel-description">Completa los tres campos. Los mensajes cambian mientras escribes y los datos no se envían ni se guardan.</p>
+        <form id="setup-quote-form" class="activity-form" novalidate>
+          <div class="activity-field">
+            <label for="setup-name">Nombre completo</label>
+            <input id="setup-name" name="name" type="text" autocomplete="name" minlength="3" maxlength="100" required data-validate placeholder="Ej. Alex Pérez" aria-describedby="setup-name-error">
+            <small class="field-error" id="setup-name-error" aria-live="polite"></small>
+          </div>
+          <div class="activity-field">
+            <label for="setup-email">Correo electrónico</label>
+            <input id="setup-email" name="email" type="email" autocomplete="email" maxlength="150" required data-validate placeholder="nombre@correo.com" aria-describedby="setup-email-error">
+            <small class="field-error" id="setup-email-error" aria-live="polite"></small>
+          </div>
+          <div class="activity-field">
+            <label for="setup-budget">Presupuesto estimado (COP)</label>
+            <input id="setup-budget" name="budget" type="number" inputmode="numeric" min="50000" max="10000000" step="50000" required data-validate placeholder="500000" aria-describedby="setup-budget-help setup-budget-error">
+            <small class="field-hint" id="setup-budget-help">Entre $50.000 y $10.000.000 COP, en incrementos de $50.000.</small>
+            <small class="field-error" id="setup-budget-error" aria-live="polite"></small>
+          </div>
+          <button class="button button-primary activity-submit" type="submit">Validar información <span>→</span></button>
+          <p class="status-message" id="setup-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </article>
+
+      <article class="activity-panel">
+        <div class="activity-panel-heading">
+          <span class="activity-index">02</span>
+          <div><div class="eyebrow">CONSULTA ASÍNCRONA</div><h3>Explora una ubicación</h3></div>
+        </div>
+        <p class="activity-panel-description">Busca una ciudad y consulta datos geográficos recibidos desde Open-Meteo, sin recargar la página.</p>
+        <form id="location-search-form" class="activity-location-form">
+          <label for="location-query">Nombre de la ciudad</label>
+          <div class="activity-search-row">
+            <input id="location-query" name="location" type="search" minlength="2" maxlength="100" required placeholder="Ej. Bogotá, Colombia" autocomplete="off">
+            <button class="button button-primary" id="location-search-button" type="submit">Buscar</button>
+          </div>
+        </form>
+        <p class="status-message" id="location-status" role="status" aria-live="polite">Escribe una ciudad para iniciar la consulta.</p>
+        <div class="location-results" id="location-results" aria-live="polite"></div>
+        <p class="api-attribution">Datos geográficos: <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank" rel="noopener noreferrer">Open-Meteo Geocoding API</a>.</p>
+      </article>
+    </div>
+    <p class="activity-disclaimer">Esta sección es una práctica académica de DOM y asincronía. La consulta de ciudades es informativa y no confirma cobertura logística ni condiciones de envío.</p>
+  </section>
+
+  <section class="promo-section section-wrap" id="nosotros">
       <div class="promo-panel"><div class="promo-copy"><div class="eyebrow"><span class="pulse-dot"></span> BUILT FOR YOUR WORLD</div><h2>Tu espacio.<br>Tu ritmo. <span>Tu juego.</span></h2><p>Desde el primer periférico hasta un setup completo: descubre tecnología diseñada para acompañar tus ideas.</p><a class="button button-light" href="#catalogo">Arma tu setup <span>↗</span></a></div><div class="promo-graphic"><div class="promo-ring ring-one"></div><div class="promo-ring ring-two"></div><div class="promo-core">N<span>+</span></div><span class="promo-caption caption-one">DESIGN / 2026</span><span class="promo-caption caption-two">TECH MEETS PLAY</span></div></div>
     </section>
 

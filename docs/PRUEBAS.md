@@ -26,12 +26,17 @@
 | P-13 | Detalle del producto | El diálogo presenta la información y permite agregar el artículo al carrito | Playwright |
 | P-14 | Carrito | El contador y el panel lateral reflejan el artículo agregado | Playwright |
 | P-15 | Catálogo completo | La vista sin filtros contiene 20 productos de demostración | Playwright |
+| P-16 | Validación en tiempo real | El nombre muestra un error inmediato cuando tiene menos de tres caracteres y el mensaje se actualiza al corregirse | Playwright |
+| P-17 | Envío del formulario de laboratorio | Nombre, correo y presupuesto válidos muestran confirmación sin enviar ni almacenar datos personales | Playwright |
+| P-18 | Renderizado de la API pública | Una respuesta JSON de geocodificación se representa dinámicamente en el DOM | Playwright con respuesta controlada |
+| P-19 | Respuesta HTTP no exitosa | La interfaz muestra un mensaje y recupera el estado del botón cuando la API responde con error | Playwright con respuesta controlada |
+| P-20 | Consulta real a Open-Meteo | La búsqueda de una ciudad devuelve resultados al usar conexión a internet | Verificación manual |
 
 ## Resultados
 
 El flujo **Project checks** ha completado las comprobaciones de sintaxis y las pruebas de estructura. El flujo **End-to-end demo capture** ha ejecutado la aplicación junto a una instancia temporal de MySQL, ha registrado un pedido ficticio pendiente de pago ha comprobado la búsqueda, el filtro de categoría, el detalle de producto y el carrito, y ha generado capturas del frontend y del panel.
 
-Estas pruebas verifican el recorrido automatizado definido para el prototipo. No incluyen pruebas de carga, auditoría de seguridad, pasarela de pagos ni validación comercial de los productos.
+Con la Actividad 6 se incorporan pruebas de navegador para la validación del formulario, el renderizado de la respuesta JSON y el manejo de errores HTTP, usando respuestas controladas por Playwright para que las comprobaciones sean reproducibles. La consulta real a Open-Meteo debe verificarse con conexión a internet. Estas pruebas no incluyen pruebas de carga, auditoría de seguridad, pasarela de pagos ni validación comercial de los productos.
 
 ## Comandos disponibles
 

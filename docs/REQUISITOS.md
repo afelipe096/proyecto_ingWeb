@@ -30,6 +30,8 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 - Consulta de categorías, productos individuales y métricas.
 - Panel de indicadores con gráfica de productos por categoría.
 - Mensajes de estado para la disponibilidad de la aplicación y del catálogo.
+- Sección Actividad 6 con validación de nombre, correo y presupuesto en tiempo real.
+- Consulta asíncrona de ciudades mediante una API REST pública, con renderizado dinámico y manejo de errores.
 
 ## Fuera del alcance actual
 
@@ -55,6 +57,10 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 - **RF-11:** Consultar categorías y métricas de catálogo mediante la API.
 - **RF-12:** Mostrar un estado adecuado cuando el catálogo remoto no está disponible.
 - **RF-13:** Mostrar el detalle del producto seleccionado, con descripción, precio, categoría y disponibilidad de demostración.
+- **RF-14:** Validar en tiempo real los campos de nombre, correo electrónico y presupuesto en la sección de laboratorio, con mensajes asociados a cada campo.
+- **RF-15:** Consultar ubicaciones en una API REST pública mediante Fetch API con async/await y representar los resultados en el DOM sin recargar la página.
+- **RF-16:** Informar los estados de carga, resultados vacíos y errores HTTP o de red durante la consulta externa.
+- **RF-17:** No enviar ni almacenar los datos personales del formulario de práctica.
 
 ## Requisitos no funcionales
 
@@ -74,6 +80,8 @@ Desarrollar una aplicación web de comercio electrónico que integre catálogo, 
 3. El carrito actualiza el contador y el subtotal cuando cambia la selección.
 4. La API rechaza las entradas inválidas y registra un pedido válido de demostración.
 5. La base de datos contiene las tablas relacionadas y el endpoint `GET /api/health` devuelve el estado del servicio.
+6. Los campos del laboratorio muestran mensajes en tiempo real y el formulario confirma los datos válidos sin transmitirlos.
+7. La búsqueda de ciudades consume la API pública con async/await, muestra los resultados en el DOM y presenta mensajes de error cuando corresponda.
 
 ## Librerías JavaScript
 

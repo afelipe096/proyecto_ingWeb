@@ -35,6 +35,9 @@ El catálogo contiene 20 productos de demostración con precios y existencias il
 - Validación en el servidor de productos, cantidades, precios y existencias.
 - Panel de indicadores de catálogo, pedidos e inventario.
 - Diseño responsive para escritorio y dispositivos móviles.
+- Sección de laboratorio con validación en tiempo real de nombre, correo y presupuesto.
+- Consulta de ciudades mediante Fetch API, async/await y renderizado dinámico desde Open-Meteo Geocoding API.
+- Manejo de carga, resultados vacíos y errores HTTP o de red en la consulta externa.
 - Exportación SQL del esquema y los datos iniciales del catálogo.
 
 ## Tecnologías
@@ -42,7 +45,8 @@ El catálogo contiene 20 productos de demostración con precios y existencias il
 | Capa | Tecnología | Responsabilidad |
 |---|---|---|
 | Interfaz | HTML5, CSS3, JavaScript | Navegación, catálogo, filtros y carrito |
-| API | Node.js, Express | Rutas HTTP y lógica de aplicación |
+| API del servidor | Node.js, Express | Rutas HTTP y lógica de aplicación |
+| API pública | Open-Meteo Geocoding API | Búsqueda de ciudades, región, coordenadas y zona horaria |
 | Persistencia | MySQL, mysql2 | Productos, categorías, clientes y pedidos |
 | Visualización | Chart.js | Gráfica de productos por categoría |
 | Configuración | dotenv | Variables de entorno |
@@ -57,7 +61,7 @@ La solución se organiza en tres capas lógicas:
 2. **Backend:** valida los datos y expone endpoints REST mediante Express.
 3. **Base de datos:** conserva categorías, productos, clientes, pedidos y detalles.
 
-El carrito se mantiene en el almacenamiento local del navegador. Al registrar un pedido, el servidor consulta nuevamente los precios y existencias y guarda la operación mediante una transacción SQL.
+El carrito se mantiene en el almacenamiento local del navegador. Al registrar un pedido, el servidor consulta nuevamente los precios y existencias y guarda la operación mediante una transacción SQL. La sección Actividad 6 demuestra validación inmediata en el navegador y una consulta Fetch a Open-Meteo para explorar ubicaciones; esa consulta solo envía el nombre de ciudad y no transmite el formulario personal.
 
 ## Estructura del repositorio
 
@@ -112,6 +116,8 @@ El modelo incluye cinco tablas: `categories`, `products`, `customers`, `orders` 
 - [Modelo entidad-relación](docs/MODELO-ER.md)
 - [Investigación de librerías JavaScript](docs/INVESTIGACION-LIBRERIAS.md)
 - [Plan de pruebas](docs/PRUEBAS.md)
+- [Actividad 6: DOM, validación y Fetch API](docs/ACTIVIDAD-6-DOM-FETCH.md)
+- [Guion del video de Actividad 6](docs/GUION-VIDEO-ACTIVIDAD-6.md)
 - [Manual de instalación](docs/USO-LOCAL.md)
 - [Guion de sustentación](docs/GUION-SUSTENTACION.md)
 - [Documentación de base de datos](database/README.md)

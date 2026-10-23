@@ -26,3 +26,48 @@
 .product-detail-copy>small{font-size:9px;color:#788094;margin-top:12px;line-height:1.6}
 .product-detail-photo .product-badge{position:absolute;top:14px;left:14px}
 @media(max-width:600px){.product-detail-layout{grid-template-columns:1fr}.product-detail-photo,.product-detail-photo img{min-height:210px;height:210px}.product-detail-copy{padding:20px}.product-detail-price{margin-top:17px}.detail-add-button{margin-top:15px}}
+
+/* Actividad 6: validación de formularios y consumo de API pública */
+.activity-lab-section{padding:76px 0 64px;border-top:1px solid var(--line)}
+.activity-heading{align-items:end;margin-bottom:30px}
+.activity-heading h2{font:600 clamp(29px,4vw,42px)/1.1 var(--display);letter-spacing:-.055em;margin:12px 0}
+.activity-heading h2 span{color:var(--accent)}
+.activity-tag{margin:0 0 6px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;color:#a6adbf;font-size:10px;letter-spacing:.06em;white-space:nowrap}
+.activity-lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.activity-panel{min-width:0;height:100%;padding:26px;background:linear-gradient(145deg,#151925,#10131c);border:1px solid var(--line);border-radius:20px}
+.activity-panel-heading{display:flex;align-items:center;gap:13px}
+.activity-index{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:12px;background:#b7f36b17;border:1px solid #b7f36b55;color:var(--accent);font:600 14px var(--display)}
+.activity-panel-heading h3{font:600 21px/1.2 var(--display);letter-spacing:-.035em;margin:5px 0 0}
+.activity-panel-description{font-size:12px;line-height:1.8;color:var(--muted);margin:18px 0 22px;max-width:520px}
+.activity-form{display:grid;gap:15px}
+.activity-field{display:grid;gap:6px}
+.activity-field label,.activity-location-form>label{font-size:11px;font-weight:700;color:#dce0ea}
+.activity-field input,.activity-search-row input{width:100%;min-width:0;padding:12px 13px;border:1px solid #ffffff1b;border-radius:10px;background:#0b0e16;color:var(--text);font-size:12px;outline:none;transition:border-color .18s,box-shadow .18s}
+.activity-field input:focus,.activity-search-row input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #b7f36b13}
+.activity-field input[aria-invalid="true"]{border-color:#ff777f;box-shadow:0 0 0 2px #ff777f13}
+.activity-field input[aria-invalid="false"]{border-color:#ffffff1b}
+.field-error{min-height:0;color:#ff9298;font-size:10px;line-height:1.45}
+.field-hint{color:#858da1;font-size:10px;line-height:1.5}
+.activity-submit{justify-self:start;margin-top:2px}
+.status-message{min-height:18px;margin:10px 0 0;color:#a4acbd;font-size:11px;line-height:1.6}
+.status-message:empty{display:none}
+.status-message.is-success{color:#b7f36b}
+.status-message.is-error{color:#ff9298}
+.status-message.is-loading{color:#c1c6d3}
+.status-message.is-empty{color:#c5b5ff}
+.activity-location-form{display:grid;gap:8px}
+.activity-search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.activity-search-row .button{white-space:nowrap}
+.activity-search-row .button:disabled{opacity:.6;cursor:wait;transform:none}
+.location-results{display:grid;grid-template-columns:1fr;gap:9px;margin-top:12px}
+.location-card{padding:14px 15px;border:1px solid var(--line);border-radius:13px;background:#0c0f17}
+.location-card h4{font:600 14px var(--display);margin:0 0 3px;color:var(--text)}
+.location-card>p{font-size:11px;color:var(--muted);margin:0 0 10px}
+.location-detail{display:flex;justify-content:space-between;gap:12px;margin:5px 0 0;font-size:10px;line-height:1.5}
+.location-detail span{color:#858da1}
+.location-detail strong{text-align:right;color:#dce0ea;font-weight:600;overflow-wrap:anywhere}
+.api-attribution{font-size:10px;color:#858da1;margin:14px 0 0}
+.api-attribution a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.activity-disclaimer{font-size:10px;line-height:1.7;color:#737b8d;margin:16px 0 0}
+@media(max-width:900px){.activity-lab-grid{grid-template-columns:1fr}.activity-panel{height:auto}.activity-heading{align-items:flex-start;gap:12px;flex-direction:column}.activity-tag{margin:0}}
+@media(max-width:600px){.activity-lab-section{padding:52px 0 42px}.activity-panel{padding:20px 17px}.activity-panel-heading h3{font-size:18px}.activity-search-row{grid-template-columns:1fr}.activity-search-row .button{width:100%}}
