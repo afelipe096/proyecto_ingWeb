@@ -108,6 +108,12 @@ El endpoint `GET /api/health` expone el estado básico del servidor.
 
 El modelo incluye cinco tablas: `categories`, `products`, `customers`, `orders` y `order_items`. Los archivos `database/schema.sql` y `database/nexora_gaming_export.sql` contienen la definición relacional y los datos iniciales.
 
+## Póster académico
+
+- [Póster Nexora Gaming & Tech en PDF](poster/Poster_Nexora_Gaming_Tech_UMB.pdf)
+- [Fuente HTML del póster](poster/poster.html)
+- Generación reproducible del PDF: `node scripts/generar-poster-pdf.cjs` (requiere Playwright y Chromium).
+
 ## Documentación
 
 - [Requisitos y alcance](docs/REQUISITOS.md)

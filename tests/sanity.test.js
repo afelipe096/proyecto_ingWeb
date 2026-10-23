@@ -17,6 +17,9 @@ test('el proyecto incluye frontend, API, base de datos y documentación', () => 
     'public/css/styles.css',
     'public/js/app.js',
     'public/js/actividad6.js',
+    'poster/poster.html',
+    'scripts/generar-poster-pdf.cjs',
+    '.github/workflows/generar-poster-pdf.yml',
     'docs/ACTIVIDAD-6-DOM-FETCH.md',
     'docs/GUION-VIDEO-ACTIVIDAD-6.md',
     'public/admin.html',
@@ -109,4 +112,19 @@ test('la Actividad 6 implementa validación en tiempo real y consulta asíncrona
   assert.match(activity, /replaceChildren\(\)/);
   assert.match(activity, /aria-invalid/);
   assert.match(server, /https:\/\/geocoding-api\.open-meteo\.com/);
+});
+
+
+test('el póster se puede regenerar desde su fuente versionada', () => {
+  const poster = read('poster/poster.html');
+  const generator = read('scripts/generar-poster-pdf.cjs');
+  const readme = read('README.md');
+  assert.match(poster, /NEXORA GAMING/);
+  assert.match(poster, /OBJETIVOS \/ OBJECTIVES/);
+  assert.match(poster, /MÉTODO \/ METHOD/);
+  assert.match(poster, /RESULTADOS \/ RESULTS/);
+  assert.match(poster, /CONCLUSIONES \/ CONCLUSIONS/);
+  assert.match(generator, /page\.pdf\(/);
+  assert.match(generator, /Poster_Nexora_Gaming_Tech_UMB\.pdf/);
+  assert.match(readme, /poster\/Poster_Nexora_Gaming_Tech_UMB\.pdf/);
 });

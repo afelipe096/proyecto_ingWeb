@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexora Gaming &amp; Tech — Póster académico</title>
+<style>
+:root{--rojo:#8d0000;--rojo2:#b51220;--tinta:#172033;--gris:#5d6676;--borde:#dfe4eb;--verde:#c4f779;--fondo:#f5f7fa;--azul:#edf2fb}
+*{box-sizing:border-box}
+@page{size:800px 1000px;margin:0}
+html,body{margin:0;padding:0;width:800px;height:1000px;overflow:hidden;background:#fff;color:var(--tinta);font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.poster{width:800px;height:1000px;background:#fff;overflow:hidden;position:relative}
+.header{height:150px;background:var(--rojo);color:#fff;padding:20px 24px 17px;position:relative}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:22px}
+.title-wrap{border:1px solid rgba(255,255,255,.45);padding:10px 12px;width:430px;min-height:78px}
+h1{font-size:27px;line-height:1.05;margin:0 0 7px;letter-spacing:.2px}
+.subtitle{font-size:13px;letter-spacing:.2px;margin:0}
+.author{font-size:10px;margin-top:8px;opacity:.92}
+.umb-block{width:260px;text-align:right}
+.umb-mark{display:inline-flex;align-items:center;justify-content:center;border:2px solid #fff;width:42px;height:42px;border-radius:50%;font-size:20px;font-weight:700;margin-right:8px;vertical-align:middle}
+.umb-name{display:inline-block;vertical-align:middle;text-align:left;font-size:15px;line-height:1.05;font-weight:700}
+.umb-name small{display:block;font-size:8px;font-weight:400;margin-top:4px;letter-spacing:.4px}
+.event{position:absolute;right:24px;bottom:13px;width:310px;text-align:right;font-size:10px;line-height:1.25;color:#fff}
+.event strong{display:block;font-size:14px;letter-spacing:.2px;margin-top:2px}
+.affiliation{position:absolute;bottom:17px;left:25px;font-size:10px;opacity:.9}
+.content{height:850px;padding:17px 20px 12px;display:grid;grid-template-columns:252px 1fr;grid-template-rows:276px 270px 1fr;gap:14px}
+.panel{border:1px solid var(--borde);min-width:0;min-height:0;background:#fff}
+.panel-title{height:31px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7cccc,#fff);border-bottom:1px solid #d2e0e3;color:#161b25;font-size:15px;font-weight:700;letter-spacing:.3px;text-align:center}
+.panel-body{padding:11px 12px;font-size:10px;line-height:1.35}
+.panel-body p{margin:0 0 7px}
+.panel-body h3{font-size:10px;margin:0 0 4px;color:var(--rojo);text-transform:none}
+.objectives{grid-column:1;grid-row:1}
+.method{grid-column:2;grid-row:1}
+.ui-panel{grid-column:1;grid-row:2}
+.results{grid-column:2;grid-row:2}
+.conclusions{grid-column:1;grid-row:3}
+.references{grid-column:2;grid-row:3}
+.bullet{position:relative;padding-left:10px;margin:0 0 6px}
+.bullet:before{content:"•";position:absolute;left:0;color:var(--rojo);font-weight:bold}
+.steps{margin:0;padding-left:17px}
+.steps li{margin:0 0 4px}
+.architecture{margin-top:14px;display:flex;align-items:center;gap:7px}
+.layer{height:58px;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#151a27;color:#fff;border-radius:10px;padding:6px}
+.layer strong{font-size:8px;letter-spacing:.5px;margin-bottom:4px}
+.layer span{font-size:7px;line-height:1.25}
+.arrow{font-size:15px;color:var(--rojo);font-weight:bold}
+.ui-window{margin:10px;background:#0b0d14;border-radius:7px;overflow:hidden;color:#fff;border:1px solid #232a3b}
+.browser-bar{height:16px;background:#b7f36b;color:#18220c;font-size:6px;display:flex;align-items:center;padding:0 7px;justify-content:space-between}
+.browser-brand{height:24px;padding:5px 7px;display:flex;justify-content:space-between;border-bottom:1px solid #272c3b;color:#ced1dc;font-size:7px}
+.browser-brand strong{color:#b7f36b}
+.ui-hero{padding:19px 12px 13px;background:radial-gradient(circle at 80% 35%,#34305e,transparent 35%),#10131d;min-height:105px}
+.ui-kicker{font-size:6px;letter-spacing:1px;color:#b7f36b}
+.ui-hero h4{font-size:19px;line-height:1.05;margin:8px 0 7px;max-width:130px}
+.ui-hero h4 span{color:#b7f36b}
+.ui-hero p{font-size:6px;color:#a6adbd;margin:0;max-width:145px}
+.ui-button{display:inline-block;padding:4px 7px;margin-top:8px;background:#b7f36b;border-radius:4px;color:#10150b;font-size:6px;font-weight:bold}
+.ui-label{padding:8px 8px 4px;font-size:6px;color:#b7f36b;letter-spacing:.8px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:5px 7px 10px}
+.product{height:48px;border-radius:5px;border:1px solid #293042;background:linear-gradient(145deg,#202638,#131722);padding:6px}
+.product i{display:block;height:18px;border-radius:3px;background:linear-gradient(135deg,#7458ca,#b7f36b);opacity:.9;margin-bottom:5px}
+.product:nth-child(2) i{background:linear-gradient(135deg,#37507b,#7c98bc)}
+.product:nth-child(3) i{background:linear-gradient(135deg,#57305e,#d489d7)}
+.product:nth-child(4) i{background:linear-gradient(135deg,#2c665c,#9ce7b1)}
+.product span{font-size:5px;color:#d8dce5}
+.caption{font-size:7px;text-align:center;color:var(--gris);margin:-3px 8px 8px}
+.result-badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.result-badge{border:1px solid #dce3ef;border-radius:8px;background:#f2f7e7;padding:9px 7px;text-align:center;min-height:42px}
+.result-badge:nth-child(2),.result-badge:nth-child(3){background:#eef2fb}
+.result-badge strong{display:block;font-size:9px;color:#5874ad;margin-bottom:3px}
+.result-badge span{display:block;font-size:7px;color:#4d5768}
+.flow{display:flex;gap:4px;align-items:center;margin-top:7px}
+.flow-step{flex:1;text-align:center;padding:7px 3px 6px;border-radius:5px;background:#f0f5e5;border:1px solid #e0e8d4;min-width:0}
+.flow-step:nth-of-type(2),.flow-step:nth-of-type(4){background:#f1edff;border-color:#ded7f6}
+.flow-step strong{display:block;font-size:6px;color:#7d0000;margin-bottom:3px}
+.flow-step span{font-size:5px;color:#536074;display:block}
+.flow-arrow{font-size:8px;color:var(--rojo)}
+.small{font-size:8px;line-height:1.4}
+.references .panel-body{font-size:8px;line-height:1.45}
+.references a{color:#7e0000;overflow-wrap:anywhere}
+.conclusion-callout{margin-top:11px;padding:8px;border-left:3px solid var(--rojo);background:#fff5f5;font-size:9px;line-height:1.45}
+.footer{position:absolute;bottom:0;left:0;right:0;height:0}
+@media print{html,body,.poster{width:800px;height:1000px}}
+</style>
+</head>
+<body>
+<div class="poster" role="document" aria-label="Póster académico de Nexora Gaming y Tech">
+  <header class="header">
+    <div class="header-top">
+      <div class="title-wrap">
+        <h1>NEXORA GAMING &amp; TECH</h1>
+        <p class="subtitle">Tienda web de tecnología y gaming</p>
+        <div class="author">Andrés Felipe Currea Piratova</div>
+      </div>
+      <div class="umb-block">
+        <span class="umb-mark">U</span><span class="umb-name">Universidad<br>Manuela Beltrán<small>SEMILLERO UMB SOFT</small></span>
+      </div>
+    </div>
+    <div class="affiliation">Ingeniería Web I · Proyecto académico · Catálogo digital y pedidos de demostración</div>
+    <div class="event">V ENCUENTRO DE SEMILLEROS DE INVESTIGACIÓN<strong>Innovación, Ciencia y Tecnología:<br>Desafíos para el Desarrollo Sostenible</strong></div>
+  </header>
+  <main class="content">
+    <section class="panel objectives">
+      <div class="panel-title">OBJETIVOS / OBJECTIVES</div>
+      <div class="panel-body">
+        <h3>Objetivo general</h3>
+        <p>Desarrollar una plataforma web para consultar productos de tecnología y gaming, gestionar el carrito y registrar pedidos de demostración.</p>
+        <h3>Objetivos específicos</h3>
+        <p class="bullet">Diseñar una interfaz adaptable con HTML5, CSS3 y JavaScript.</p>
+        <p class="bullet">Organizar el catálogo por categorías con búsqueda, filtros y ordenamiento.</p>
+        <p class="bullet">Integrar una API REST con Node.js/Express y una base de datos MySQL.</p>
+        <p class="bullet">Validar solicitudes, documentar la arquitectura y automatizar pruebas.</p>
+      </div>
+    </section>
+    <section class="panel method">
+      <div class="panel-title">MÉTODO / METHOD</div>
+      <div class="panel-body">
+        <h3>Metodología de desarrollo</h3>
+        <ol class="steps">
+          <li>Definir la estructura visual y el recorrido del catálogo.</li>
+          <li>Implementar categorías, productos, filtros, carrito y pedidos.</li>
+          <li>Modelar cinco tablas relacionadas en MySQL.</li>
+          <li>Validar solicitudes y registrar pedidos mediante transacciones.</li>
+          <li>Ejecutar pruebas automáticas de sintaxis e integración.</li>
+        </ol>
+        <div class="architecture" aria-label="Arquitectura de tres capas">
+          <div class="layer"><strong>FRONTEND</strong><span>HTML5 · CSS3 · JavaScript<br>Catálogo, búsqueda y carrito</span></div>
+          <div class="arrow">→</div>
+          <div class="layer"><strong>BACKEND / API REST</strong><span>Node.js · Express<br>Validación y lógica de pedidos</span></div>
+          <div class="arrow">→</div>
+          <div class="layer"><strong>PERSISTENCIA</strong><span>MySQL · mysql2<br>Productos, clientes y pedidos</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="panel ui-panel">
+      <div class="panel-title">INTERFAZ DE USUARIO / USER INTERFACE</div>
+      <div class="ui-window" aria-label="Representación de la interfaz de Nexora">
+        <div class="browser-bar"><span>● ● ● &nbsp; nexora.local</span><span>DEMO / 2026</span></div>
+        <div class="browser-brand"><strong>NEXORA.</strong><span>Inicio　 Catálogo　 Categorías　 Carrito 0</span></div>
+        <div class="ui-hero"><div class="ui-kicker">TU UNIVERSO DIGITAL</div><h4>Juega en otra<br><span>dimensión.</span></h4><p>Hardware, accesorios y experiencias digitales para tu próximo nivel.</p><span class="ui-button">EXPLORAR CATÁLOGO ↗</span></div>
+        <div class="ui-label">ENCUENTRA TU ZONA / PRODUCTOS DESTACADOS</div>
+        <div class="products"><div class="product"><i></i><span>Juegos</span></div><div class="product"><i></i><span>Audio</span></div><div class="product"><i></i><span>Monitores</span></div><div class="product"><i></i><span>Periféricos</span></div></div>
+      </div>
+      <p class="caption">Representación visual de la interfaz; productos y precios son ilustrativos.</p>
+    </section>
+    <section class="panel results">
+      <div class="panel-title">RESULTADOS / RESULTS</div>
+      <div class="panel-body">
+        <h3>Resultados de validación</h3>
+        <p class="bullet">Catálogo de demostración con 20 productos en 10 categorías.</p>
+        <p class="bullet">Búsqueda, filtros, ordenamiento y carrito en el frontend.</p>
+        <p class="bullet">API REST para categorías, productos, pedidos y métricas.</p>
+        <p class="bullet">Base de datos MySQL con cinco tablas relacionadas.</p>
+        <p class="bullet">Pruebas automatizadas de API, validación y navegación.</p>
+        <h3 style="margin-top:9px">Mapa de navegación — flujo principal</h3>
+        <div class="flow">
+          <div class="flow-step"><strong>INICIO</strong><span>Portada y categorías</span></div><span class="flow-arrow">›</span>
+          <div class="flow-step"><strong>CATÁLOGO</strong><span>Buscar y filtrar</span></div><span class="flow-arrow">›</span>
+          <div class="flow-step"><strong>CARRITO</strong><span>Gestionar artículos</span></div><span class="flow-arrow">›</span>
+          <div class="flow-step"><strong>PEDIDO</strong><span>Datos de demo</span></div><span class="flow-arrow">›</span>
+          <div class="flow-step"><strong>CONFIRMACIÓN</strong><span>Número de pedido</span></div>
+        </div>
+        <div class="result-badge-grid">
+          <div class="result-badge"><strong>20 PRODUCTOS</strong><span>Catálogo de demostración</span></div>
+          <div class="result-badge"><strong>5 TABLAS</strong><span>Modelo relacional</span></div>
+          <div class="result-badge"><strong>3 CAPAS LÓGICAS</strong><span>Interfaz · API · base de datos</span></div>
+          <div class="result-badge"><strong>SIN COBRO REAL</strong><span>Pedidos de demostración</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="panel conclusions">
+      <div class="panel-title">CONCLUSIONES / CONCLUSIONS</div>
+      <div class="panel-body">
+        <p>Nexora integra el catálogo, el carrito y el registro de pedidos de demostración en una arquitectura de tres capas.</p>
+        <p class="bullet">La separación entre frontend, API y persistencia organiza las responsabilidades.</p>
+        <p class="bullet">Las consultas parametrizadas y las transacciones fortalecen la consistencia de los pedidos.</p>
+        <p class="bullet">La automatización permite comprobar recorridos clave y reducir regresiones.</p>
+        <div class="conclusion-callout"><strong>Alcance académico.</strong> Los precios, productos y existencias son ilustrativos. No se procesan pagos ni se entregan claves digitales reales.</div>
+      </div>
+    </section>
+    <section class="panel references">
+      <div class="panel-title">REFERENCIAS / REFERENCES</div>
+      <div class="panel-body">
+        <p>Pressman, R. S., &amp; Maxim, B. R. (2021). <em>Ingeniería de Software</em>. McGraw Hill.</p>
+        <p>Laudon, K. C. (2023). <em>E-commerce: Business, Technology, Society</em>. Pearson Education.</p>
+        <p>Express. (s. f.). <em>Express documentation</em>. <a href="https://expressjs.com/">https://expressjs.com/</a></p>
+        <p>Chart.js. (s. f.). <em>Chart.js documentation</em>. <a href="https://www.chartjs.org/docs/latest/">https://www.chartjs.org/docs/latest/</a></p>
+        <p>Open-Meteo. (s. f.). <em>Geocoding API</em>. <a href="https://open-meteo.com/en/docs/geocoding-api">open-meteo.com/en/docs/geocoding-api</a></p>
+        <p class="small">Documentación y resultado de una tienda web académica desarrollada con HTML5, CSS3, JavaScript, Node.js, Express y MySQL.</p>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

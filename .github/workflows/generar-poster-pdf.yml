@@ -1,0 +1,37 @@
+name: Generar póster PDF
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar-poster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar Playwright
+        run: npm install --no-save playwright
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Generar y verificar el PDF
+        run: node scripts/generar-poster-pdf.cjs
+      - name: Guardar el PDF en GitHub
+        run: |
+          git add poster/Poster_Nexora_Gaming_Tech_UMB.pdf
+          if git diff --cached --quiet; then
+            echo "El póster PDF no presenta cambios."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Añadir el póster de Nexora en formato PDF"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
